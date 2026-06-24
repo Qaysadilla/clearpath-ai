@@ -1,3 +1,5 @@
+export type Language = 'en' | 'ar' | 'fr' | 'es';
+
 export interface AnalysisResult {
   summary: string;
   deadlines: Deadline[];
@@ -8,6 +10,8 @@ export interface AnalysisResult {
   checklist: ChecklistItem[];
   draftReply: DraftEmail;
   simplerExplanation: string;
+  ultraSimpleExplanation?: string;
+  language?: Language;
 }
 
 export interface Deadline {

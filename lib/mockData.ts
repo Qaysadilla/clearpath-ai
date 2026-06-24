@@ -9,25 +9,26 @@ const calculateDaysUntil = (dateString: string): number => {
   return diffDays;
 };
 
+// SAMPLE APPOINTMENT RESULT - All data is fictional for demonstration
 export const appointmentResult: AnalysisResult = {
-  summary: "You have a cardiology appointment with Dr. Sarah Chen on July 8, 2026 at 2:30 PM at Memorial Hospital. This is a follow-up appointment to review your recent ECG results and discuss treatment options. You need to fast for 12 hours before the appointment and bring specific documents.",
+  summary: "SAMPLE ANALYSIS: This demonstrates how ClearPath AI analyzes a medical appointment letter. In this fictional example, you have an appointment with Dr. Jane Demo on July 8, 2026 at 2:30 PM at Demo Medical Center. You would need to fast for 12 hours before and bring specific documents. (This is sample data only)",
   
   deadlines: [
     {
       date: "2026-07-08",
-      description: "Cardiology appointment with Dr. Chen",
+      description: "Sample appointment with Dr. Demo (fictional)",
       daysUntil: calculateDaysUntil("2026-07-08"),
       importance: "critical"
     },
     {
       date: "2026-07-06",
-      description: "Last day to cancel without $50 fee (48 hours notice required)",
+      description: "Sample cancellation deadline (fictional)",
       daysUntil: calculateDaysUntil("2026-07-06"),
       importance: "important"
     },
     {
       date: "2026-07-05",
-      description: "Request accommodations (wheelchair, translation) if needed",
+      description: "Sample accommodation request deadline (fictional)",
       daysUntil: calculateDaysUntil("2026-07-05"),
       importance: "normal"
     }
@@ -35,135 +36,124 @@ export const appointmentResult: AnalysisResult = {
   
   actions: [
     {
-      action: "Fast for 12 hours before appointment (no food/drink except water after 2:30 AM on July 8)",
+      action: "SAMPLE: Fast for 12 hours before appointment (fictional example)",
       priority: "high",
       deadline: "July 8, 2026",
       estimatedTime: "12 hours"
     },
     {
-      action: "Gather all required documents (health card, photo ID, medication list, previous test results)",
+      action: "SAMPLE: Gather required documents (fictional example)",
       priority: "high",
       deadline: "July 8, 2026",
       estimatedTime: "30 minutes"
     },
     {
-      action: "Arrive 15 minutes early (2:15 PM) for registration",
+      action: "SAMPLE: Arrive 15 minutes early for registration (fictional example)",
       priority: "medium",
       deadline: "July 8, 2026",
       estimatedTime: "15 minutes"
     },
     {
-      action: "Prepare list of current medications with dosages",
+      action: "SAMPLE: Prepare medication list (fictional example)",
       priority: "medium",
       deadline: "July 7, 2026",
       estimatedTime: "15 minutes"
-    },
-    {
-      action: "Call to request accommodations if needed (3 days notice)",
-      priority: "low",
-      deadline: "July 5, 2026",
-      estimatedTime: "10 minutes"
     }
   ],
   
   documentsNeeded: [
-    "Ontario Health Card (OHIP)",
-    "Government-issued photo ID (driver's license, passport, or health card)",
-    "List of all current medications with dosages",
-    "Referral letter from Dr. James Wilson (if not already on file)",
-    "Previous test results or medical records related to heart condition",
-    "Recent blood work results (if available)"
+    "Health Card (sample)",
+    "Photo ID (sample)",
+    "Medication list (sample)",
+    "Referral letter (sample)",
+    "Previous test results (sample)"
   ],
   
   riskLevel: "low",
-  riskExplanation: "This is a routine follow-up appointment. The main risks are: missing the appointment (which could delay your treatment and result in a $50 fee), not fasting properly (which may require rescheduling), or forgetting required documents. These are all manageable with proper preparation.",
+  riskExplanation: "SAMPLE ANALYSIS: This demonstrates a low-risk scenario. In a real appointment situation, the main considerations would be: attending on time, following preparation instructions, and bringing required documents. This is fictional data for demonstration only.",
   
   checklist: [
     {
-      step: "Mark July 8, 2026 at 2:30 PM in your calendar",
+      step: "SAMPLE: Mark appointment date in calendar (fictional)",
       completed: false,
-      notes: "Set multiple reminders"
+      notes: "This is a demonstration checklist item"
     },
     {
-      step: "Gather Ontario Health Card and photo ID",
+      step: "SAMPLE: Gather health card and ID (fictional)",
       completed: false
     },
     {
-      step: "Create list of all current medications (names and dosages)",
+      step: "SAMPLE: Create medication list (fictional)",
       completed: false,
-      notes: "Include vitamins and supplements"
+      notes: "Demonstration only"
     },
     {
-      step: "Collect any previous heart-related test results",
+      step: "SAMPLE: Collect previous test results (fictional)",
       completed: false
     },
     {
-      step: "Check if you have Dr. Wilson's referral letter",
+      step: "SAMPLE: Plan transportation (fictional)",
       completed: false,
-      notes: "Call Dr. Wilson's office if you don't have it"
-    },
-    {
-      step: "Plan transportation to Memorial Hospital, 3rd Floor",
-      completed: false,
-      notes: "Budget $8 for parking or plan transit route"
-    },
-    {
-      step: "Set alarm for 2:30 AM on July 8 to stop eating/drinking",
-      completed: false,
-      notes: "Water is allowed after this time"
-    },
-    {
-      step: "Leave home by 2:00 PM on July 8 to arrive early",
-      completed: false
+      notes: "This is sample data"
     }
   ],
   
   draftReply: {
-    subject: "Appointment Confirmation - July 8, 2026 with Dr. Chen",
-    body: `Dear Jennifer Martinez,
+    subject: "SAMPLE: Appointment Confirmation (Fictional)",
+    body: `SAMPLE EMAIL - FOR DEMONSTRATION ONLY
 
-Thank you for the appointment confirmation. I am writing to confirm that I will attend my appointment with Dr. Sarah Chen on July 8, 2026 at 2:30 PM in the Cardiology Wing, 3rd Floor.
+Dear [Recipient Name],
+
+Thank you for the appointment confirmation. This is a sample response showing how you might confirm an appointment.
 
 I understand that I need to:
-- Fast for 12 hours before the appointment (no food or drink except water after 2:30 AM)
-- Arrive 15 minutes early at 2:15 PM for registration
-- Bring my Ontario Health Card, photo ID, and list of current medications
-- Bring any previous test results related to my heart condition
+- Attend on [date] at [time]
+- Bring required documents
+- Follow preparation instructions
 
-I have a question: I am currently taking [medication name]. Should I take this medication on the morning of July 8, or should I wait until after the appointment?
-
-Also, could you please confirm if you have Dr. Wilson's referral letter on file? If not, I will contact his office to obtain a copy.
+I have a question about [specific concern].
 
 Thank you for your assistance.
 
 Best regards,
 [Your Name]
-[Your Phone Number]`,
+
+NOTE: This is fictional sample text for demonstration purposes.`,
     tone: "professional"
   },
   
-  simplerExplanation: "You have a doctor appointment on July 8 at 2:30 PM. The doctor will check your heart. You must not eat or drink (except water) for 12 hours before. Bring your health card, ID, and a list of your medicines. Come 15 minutes early. If you cannot come, call 2 days before or you pay $50. Parking costs $8."
+  simplerExplanation: "SAMPLE EXPLANATION: You have a doctor visit on July 8 at 2:30 PM. Don't eat or drink (except water) for 12 hours before. Bring your health card, ID, and medicine list. Come 15 minutes early. If you can't come, call 2 days before. (This is fictional sample data for demonstration only)",
+  
+  ultraSimpleExplanation: `SAMPLE - ULTRA SIMPLE VERSION:
+• Doctor visit: July 8, 2:30 PM
+• No food 12 hours before
+• Bring: health card, ID, medicine list
+• Come early: 2:15 PM
+• Can't come? Call 2 days before
+
+(This is fictional demonstration data)`
 };
 
+// SAMPLE HOUSING RESULT - All data is fictional and uses safer language
 export const housingResult: AnalysisResult = {
-  summary: "This is an eviction notice (Form N4) because you owe $3,600 in rent for May and June 2026. You must either pay the full amount by July 11, 2026, or move out by that date. If you don't pay or move out, your landlord can apply to evict you through the Landlord and Tenant Board. You have options: pay in full, arrange a payment plan, or dispute the notice.",
+  summary: "SAMPLE ANALYSIS: This demonstrates how ClearPath AI analyzes a rent notice. In this fictional example, there is an outstanding rent balance of $3,600 for May and June 2026. The notice shows a payment deadline of July 11, 2026, with options to pay in full, arrange a payment plan, or discuss the situation. (This is sample data only - not a real legal notice)",
   
   deadlines: [
     {
       date: "2026-07-11",
-      description: "CRITICAL: Pay $3,600 in full OR move out to avoid eviction proceedings",
+      description: "SAMPLE: Payment or discussion deadline (fictional)",
       daysUntil: calculateDaysUntil("2026-07-11"),
       importance: "critical"
     },
     {
       date: "2026-06-27",
-      description: "Last day to contact landlord to discuss payment plan",
+      description: "SAMPLE: Recommended contact date (fictional)",
       daysUntil: calculateDaysUntil("2026-06-27"),
-      importance: "critical"
+      importance: "important"
     },
     {
       date: "2026-06-24",
-      description: "Contact legal clinic for free advice (as soon as possible)",
+      description: "SAMPLE: Seek advice date (fictional)",
       daysUntil: calculateDaysUntil("2026-06-24"),
       importance: "important"
     }
@@ -171,326 +161,244 @@ export const housingResult: AnalysisResult = {
   
   actions: [
     {
-      action: "Contact Property Management immediately at (416) 555-7890 to discuss payment plan options",
+      action: "SAMPLE: Contact property management to discuss options (fictional)",
       priority: "high",
       deadline: "June 27, 2026",
       estimatedTime: "30 minutes"
     },
     {
-      action: "Call Toronto Community Legal Clinic at (416) 555-1234 for free legal advice",
+      action: "SAMPLE: Seek advice from community resources (fictional)",
       priority: "high",
       deadline: "June 24, 2026",
       estimatedTime: "1 hour"
     },
     {
-      action: "Gather proof of income, bank statements, and any evidence of financial hardship",
+      action: "SAMPLE: Gather financial documents (fictional)",
       priority: "high",
       deadline: "June 27, 2026",
       estimatedTime: "1 hour"
     },
     {
-      action: "If you can pay: Arrange certified cheque or money order for $3,600",
-      priority: "high",
-      deadline: "July 11, 2026",
-      estimatedTime: "2 hours"
-    },
-    {
-      action: "If you cannot pay: Start looking for alternative housing and contact Housing Help Centre",
+      action: "SAMPLE: Explore payment options (fictional)",
       priority: "medium",
       deadline: "July 1, 2026",
-      estimatedTime: "Ongoing"
-    },
-    {
-      action: "Document all communications with landlord (save emails, take notes of phone calls)",
-      priority: "medium",
-      deadline: "Ongoing",
-      estimatedTime: "15 minutes per interaction"
+      estimatedTime: "Varies"
     }
   ],
   
   documentsNeeded: [
-    "Copy of this eviction notice (Form N4)",
-    "Copy of your lease agreement",
-    "Proof of rent payments (bank statements, receipts, e-transfer confirmations)",
-    "Proof of income (pay stubs, employment letter, government benefits statements)",
-    "Bank statements showing your financial situation",
-    "Any written communication with your landlord",
-    "Evidence of financial hardship (medical bills, job loss documentation, etc.)"
+    "Copy of notice (sample)",
+    "Lease agreement (sample)",
+    "Payment records (sample)",
+    "Income documentation (sample)",
+    "Bank statements (sample)",
+    "Communication records (sample)"
   ],
   
-  riskLevel: "high",
-  riskExplanation: "This is a serious legal situation. If you don't pay the full $3,600 by July 11 or move out, your landlord can apply to the Landlord and Tenant Board to evict you. An eviction on your record makes it very difficult to rent in the future. However, you have rights: you cannot be locked out, your utilities cannot be shut off, and you can negotiate a payment plan. You must act immediately - contact your landlord and get legal advice today.",
+  riskLevel: "medium",
+  riskExplanation: "SAMPLE ANALYSIS: This demonstrates a medium-risk scenario. In a real rent situation, it would be important to: communicate promptly with the landlord, understand your rights and options, seek professional advice, and explore payment arrangements. This is fictional data for demonstration only - always consult with legal professionals for real situations.",
   
   checklist: [
     {
-      step: "TODAY: Call Toronto Community Legal Clinic at (416) 555-1234 for free legal advice",
+      step: "SAMPLE: Contact property management (fictional)",
       completed: false,
-      notes: "They can help you understand your rights and options"
+      notes: "Demonstration checklist item"
     },
     {
-      step: "TODAY: Call Property Manager Robert Chen at (416) 555-7890 ext. 102 to discuss payment plan",
+      step: "SAMPLE: Seek community advice (fictional)",
       completed: false,
-      notes: "Be honest about your financial situation"
+      notes: "This is sample data"
     },
     {
-      step: "Gather all documents: lease, rent receipts, bank statements, proof of income",
-      completed: false,
-      notes: "You'll need these for legal clinic and landlord"
+      step: "SAMPLE: Gather documents (fictional)",
+      completed: false
     },
     {
-      step: "Calculate what you can afford to pay now and monthly",
+      step: "SAMPLE: Calculate payment options (fictional)",
       completed: false,
-      notes: "Be realistic - include all your expenses"
+      notes: "Demonstration only"
     },
     {
-      step: "Write down your proposed payment plan before calling landlord",
-      completed: false,
-      notes: "Example: $1,000 now + $500/month for 6 months"
-    },
-    {
-      step: "Contact Housing Help Centre at (416) 555-5678 for emergency assistance",
-      completed: false,
-      notes: "They may have emergency funds or other housing options"
-    },
-    {
-      step: "If payment plan agreed: Get it in writing before making any payments",
-      completed: false,
-      notes: "Don't pay anything without written agreement"
-    },
-    {
-      step: "If you can pay in full: Get certified cheque or money order for $3,600",
-      completed: false,
-      notes: "Personal cheques not accepted for arrears"
-    },
-    {
-      step: "Keep copies of all communications and payments",
-      completed: false,
-      notes: "Take photos, save emails, write down phone call details"
+      step: "SAMPLE: Explore assistance programs (fictional)",
+      completed: false
     }
   ],
   
   draftReply: {
-    subject: "Response to Notice to Vacate - Unit 304, 789 Maple Street - Payment Plan Request",
-    body: `Dear Mr. Robert Chen,
+    subject: "SAMPLE: Response to Rent Notice (Fictional)",
+    body: `SAMPLE EMAIL - FOR DEMONSTRATION ONLY
 
-I am writing in response to the Notice to Vacate (Form N4) dated June 20, 2026, regarding rent arrears for Unit 304, 789 Maple Street.
+Dear [Property Manager Name],
 
-I acknowledge that I owe $3,600 for May and June 2026 rent. I take full responsibility for this situation. I have been experiencing financial difficulties due to [brief explanation: job loss/medical emergency/reduced hours/etc.], but I am committed to resolving this matter.
+I am writing regarding the rent notice dated [date].
 
-I would like to request a meeting to discuss a payment plan. I am able to pay [amount] immediately and [amount] per month until the arrears are paid in full. I believe I can have the full amount paid by [date].
+I acknowledge the outstanding balance and would like to discuss options for resolving this situation. I am experiencing [brief explanation] and am committed to finding a solution.
 
-My current financial situation:
-- Monthly income: [amount]
-- Current employment: [status]
-- Ability to pay immediately: [amount]
+I would appreciate the opportunity to discuss:
+- Payment arrangement options
+- Timeline for resolution
+- Any available assistance programs
 
-I value my tenancy at 789 Maple Street and want to remain in good standing. I am requesting this meeting before June 27, 2026, as indicated in the notice.
-
-Please contact me at your earliest convenience to discuss this payment arrangement. I am available [days/times] and can be reached at [phone number].
-
-I am also seeking advice from community legal services to ensure I understand my rights and responsibilities.
+I am available [days/times] and can be reached at [contact information].
 
 Thank you for your consideration.
 
 Sincerely,
-Maria Santos
-Unit 304, 789 Maple Street
-[Phone Number]
-[Email Address]`,
+[Your Name]
+
+NOTE: This is fictional sample text for demonstration purposes.`,
     tone: "formal"
   },
   
-  simplerExplanation: "You must pay $3,600 by July 11, or move out. This is because you did not pay rent for May and June. If you cannot pay all the money, call the landlord before June 27 to make a payment plan. Also call a free legal clinic today at (416) 555-1234. They will help you. Do not ignore this paper. Your home is in danger. You have rights - the landlord cannot lock you out or turn off your water/electricity. But you must act now."
+  simplerExplanation: "SAMPLE EXPLANATION: You owe $3,600 for rent (May and June). You must pay by July 11 or talk to the landlord about a payment plan. Call them before June 27. Also get free advice from a community legal clinic. You have options - don't ignore this. (This is fictional sample data for demonstration only)",
+  
+  ultraSimpleExplanation: `SAMPLE - ULTRA SIMPLE VERSION:
+• Rent owed: $3,600
+• Pay by: July 11
+• Or: Make payment plan
+• Call landlord: Before June 27
+• Get free help: Legal clinic
+• Don't ignore this paper
+
+(This is fictional demonstration data)`
 };
 
+// SAMPLE SCHOOL RESULT - All data is fictional
 export const schoolResult: AnalysisResult = {
-  summary: "Your financial aid application requires verification - a standard process to confirm your information is accurate. You must submit 5 types of documents by July 5, 2026 at 5:00 PM, or your $13,500 in financial aid will be cancelled. This includes tax documents, proof of identity, citizenship documents, and completed forms. If you don't complete this, you'll have to pay full tuition ($7,200) by August 15, 2026.",
+  summary: "SAMPLE ANALYSIS: This demonstrates how ClearPath AI analyzes a financial aid verification letter. In this fictional example, you need to submit verification documents by July 5, 2026 at 5:00 PM to maintain $13,500 in financial aid. Required documents include tax forms, ID, and household information. (This is sample data only)",
   
   deadlines: [
     {
       date: "2026-07-05",
-      description: "CRITICAL: Submit all verification documents by 5:00 PM or lose $13,500 in financial aid",
+      description: "SAMPLE: Document submission deadline (fictional)",
       daysUntil: calculateDaysUntil("2026-07-05"),
       importance: "critical"
     },
     {
       date: "2026-08-01",
-      description: "Residence fees due ($4,800) - only if financial aid is approved",
+      description: "SAMPLE: Other deadline (fictional)",
       daysUntil: calculateDaysUntil("2026-08-01"),
       importance: "important"
     },
     {
       date: "2026-08-15",
-      description: "Fall tuition due ($7,200) - late fees apply after this date",
+      description: "SAMPLE: Payment deadline (fictional)",
       daysUntil: calculateDaysUntil("2026-08-15"),
-      importance: "critical"
+      importance: "important"
     }
   ],
   
   actions: [
     {
-      action: "Download and complete Verification Worksheet (Form V5) from university website",
+      action: "SAMPLE: Download and complete forms (fictional)",
       priority: "high",
       deadline: "June 30, 2026",
       estimatedTime: "30 minutes"
     },
     {
-      action: "Request 2025 Notice of Assessment from Canada Revenue Agency (CRA)",
+      action: "SAMPLE: Request tax documents (fictional)",
       priority: "high",
       deadline: "June 28, 2026",
-      estimatedTime: "1 hour (online) or 2 weeks (by mail)"
+      estimatedTime: "1 hour"
     },
     {
-      action: "Gather all T4 slips from 2025 employment",
+      action: "SAMPLE: Gather required documents (fictional)",
       priority: "high",
       deadline: "June 30, 2026",
-      estimatedTime: "30 minutes"
+      estimatedTime: "Varies"
     },
     {
-      action: "Get parent/guardian tax documents if you're a dependent student",
-      priority: "high",
-      deadline: "June 30, 2026",
-      estimatedTime: "1-2 days (depends on parents' availability)"
-    },
-    {
-      action: "Make copies of photo ID and citizenship/immigration documents",
-      priority: "high",
-      deadline: "July 2, 2026",
-      estimatedTime: "15 minutes"
-    },
-    {
-      action: "Complete Household Information Form",
-      priority: "medium",
-      deadline: "July 2, 2026",
-      estimatedTime: "20 minutes"
-    },
-    {
-      action: "Upload all documents to student portal (recommended method)",
+      action: "SAMPLE: Upload documents (fictional)",
       priority: "high",
       deadline: "July 5, 2026",
       estimatedTime: "30 minutes"
-    },
-    {
-      action: "Attend verification help session if you need assistance (Tuesdays/Thursdays 2-4 PM)",
-      priority: "low",
-      deadline: "Before July 5, 2026",
-      estimatedTime: "1-2 hours"
     }
   ],
   
   documentsNeeded: [
-    "Verification Worksheet (Form V5) - completed and signed",
-    "Your 2025 Notice of Assessment from CRA",
-    "All T4 slips from 2025 (from every employer)",
-    "T5 slips if you have investment income",
-    "Parent/guardian 2025 Notice of Assessment (if you're a dependent student)",
-    "Government-issued photo ID (driver's license, passport, or health card)",
-    "Proof of citizenship or immigration status (birth certificate, citizenship certificate, PR card, or study permit)",
-    "Household Information Form - completed",
-    "If documents not in English: certified translations with translator credentials"
+    "Verification form (sample)",
+    "Tax documents (sample)",
+    "Photo ID (sample)",
+    "Citizenship proof (sample)",
+    "Household form (sample)"
   ],
   
   riskLevel: "medium",
-  riskExplanation: "This is a time-sensitive administrative requirement. The risk is moderate because: (1) You have a clear deadline (July 5) with enough time to gather documents, (2) The process is straightforward but requires multiple documents, (3) Failure to complete means losing $13,500 in aid and having to pay full tuition, (4) Help is available through the financial aid office. The main risks are: missing the deadline, submitting incomplete documents, or not getting parent cooperation if you're a dependent student.",
+  riskExplanation: "SAMPLE ANALYSIS: This demonstrates a medium-risk scenario with a clear deadline. In a real financial aid situation, it would be important to: gather documents promptly, meet the deadline, contact the office with questions, and keep copies of submissions. This is fictional data for demonstration only.",
   
   checklist: [
     {
-      step: "Go to www.torontouniversity.ca/finaid/forms and download Form V5 (Verification Worksheet)",
+      step: "SAMPLE: Download verification form (fictional)",
       completed: false,
-      notes: "Print it or save PDF to fill out electronically"
+      notes: "Demonstration checklist"
     },
     {
-      step: "Complete all sections of Form V5 and sign it",
-      completed: false,
-      notes: "If dependent student, parent/guardian must also sign"
+      step: "SAMPLE: Complete form (fictional)",
+      completed: false
     },
     {
-      step: "Log into CRA My Account at www.cra.gc.ca to download your 2025 Notice of Assessment",
+      step: "SAMPLE: Request tax documents (fictional)",
       completed: false,
-      notes: "If you don't have CRA account, call 1-800-959-8281 to request by mail (takes 2 weeks)"
+      notes: "This is sample data"
     },
     {
-      step: "Gather all T4 slips from 2025 (check with all employers you worked for)",
-      completed: false,
-      notes: "If you lost them, request duplicates from employers or CRA"
+      step: "SAMPLE: Gather ID documents (fictional)",
+      completed: false
     },
     {
-      step: "If dependent student: Ask parents for their 2025 Notice of Assessment",
+      step: "SAMPLE: Upload all documents (fictional)",
       completed: false,
-      notes: "Explain this is required for your financial aid - give them deadline"
-    },
-    {
-      step: "Make clear photocopies or scans of your photo ID (both sides)",
-      completed: false,
-      notes: "Must be current and not expired"
-    },
-    {
-      step: "Make copies of citizenship/immigration documents (birth certificate, PR card, etc.)",
-      completed: false,
-      notes: "If international student, include study permit"
-    },
-    {
-      step: "Download and complete Household Information Form from university website",
-      completed: false,
-      notes: "List everyone living in your household and their income"
-    },
-    {
-      step: "Organize all documents and check you have everything on the list",
-      completed: false,
-      notes: "Missing even one document will delay your aid"
-    },
-    {
-      step: "Upload documents to student portal at portal.torontouniversity.ca",
-      completed: false,
-      notes: "Go to Financial Aid → Upload Documents. Save confirmation email!"
-    },
-    {
-      step: "Check your university email daily for any follow-up requests",
-      completed: false,
-      notes: "Financial aid office may ask for additional information"
+      notes: "Demonstration only"
     }
   ],
   
   draftReply: {
-    subject: "Re: Financial Aid Verification - Student ID 20261234567 - Question",
-    body: `Dear Financial Aid Office,
+    subject: "SAMPLE: Financial Aid Verification Question (Fictional)",
+    body: `SAMPLE EMAIL - FOR DEMONSTRATION ONLY
 
-Thank you for your email regarding the verification requirement for my financial aid application (Student ID: 20261234567).
+Dear Financial Aid Office,
 
-I am working on gathering all the required documents and plan to submit them by July 5, 2026. I have a few questions to ensure I submit everything correctly:
+Thank you for your notification regarding verification requirements.
 
-1. I worked for two different employers in 2025. Do I need to submit both T4 slips, or just the most recent one?
+I am working on gathering the required documents and have a few questions:
 
-2. I am a dependent student, but my parents are [divorced/separated/living abroad]. How should I handle the requirement for parent tax documents in this situation?
+1. [Your first question]
+2. [Your second question]
+3. [Any other questions]
 
-3. For the Household Information Form, should I include my roommates at university, or only my family members at my permanent address?
+I want to ensure I submit everything correctly by the deadline. Please let me know if you need any additional information.
 
-4. I notice the deadline is July 5 at 5:00 PM. Is this Eastern Time? And if I upload documents at 4:55 PM, is that acceptable?
-
-5. After I upload the documents, how will I know they were received successfully? Will I get a confirmation email?
-
-I want to make sure I do this correctly the first time to avoid any delays in my financial aid. If it would be helpful, I can attend one of your verification help sessions on [Tuesday/Thursday] at 2:00 PM.
-
-Thank you for your assistance. I appreciate your help in ensuring I can continue my studies at Toronto University.
+Thank you for your assistance.
 
 Best regards,
-Ahmed Hassan
-Student ID: 20261234567
-Email: student.ahmed@torontouniversity.ca
-Phone: [Your Phone Number]`,
+[Your Name]
+[Student ID]
+
+NOTE: This is fictional sample text for demonstration purposes.`,
     tone: "professional"
   },
   
-  simplerExplanation: "The university needs to check your financial aid papers. You must send 5 types of documents by July 5 at 5 PM. If you do not send them, you will not get $13,500 in money for school. You will have to pay $7,200 for classes yourself. The documents you need: (1) Tax papers from 2025, (2) Your ID card, (3) Paper showing you are Canadian or have permission to study, (4) A form about your family, (5) Papers from your jobs in 2025. You can upload these papers on the school website. If you need help, call (416) 555-3000 or go to the school office Monday-Friday 9 AM to 4 PM. Do not wait - start getting these papers today."
+  simplerExplanation: "SAMPLE EXPLANATION: The school needs to check your financial aid papers. Send 5 types of documents by July 5 at 5 PM. If you don't send them, you won't get $13,500 for school. You need: tax papers, ID, citizenship paper, family form, and job papers. Upload on school website. Need help? Call the school office. (This is fictional sample data for demonstration only)",
+  
+  ultraSimpleExplanation: `SAMPLE - ULTRA SIMPLE VERSION:
+• School needs papers by July 5, 5 PM
+• Need 5 types of papers
+• Don't send = lose $13,500
+• Papers: taxes, ID, citizenship, family info, job info
+• Upload on school website
+• Need help? Call school
+
+(This is fictional demonstration data)`
 };
 
+// GENERIC RESULT - For unknown document types
 export const genericResult: AnalysisResult = {
-  summary: "This document contains important information that requires your attention. Based on the content, there appear to be deadlines, required actions, and documents you may need to provide. Please review the analysis below carefully and take action as soon as possible.",
+  summary: "SAMPLE ANALYSIS: This is a generic analysis for demonstration purposes. ClearPath AI would analyze the document content and provide relevant information about deadlines, actions, and requirements. (This is sample data only)",
   
   deadlines: [
     {
       date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      description: "Estimated response deadline (typically 2 weeks from document date)",
+      description: "SAMPLE: Estimated response deadline (fictional)",
       daysUntil: 14,
       importance: "important"
     }
@@ -498,87 +406,88 @@ export const genericResult: AnalysisResult = {
   
   actions: [
     {
-      action: "Read the entire document carefully to understand all requirements",
+      action: "SAMPLE: Review document carefully (fictional)",
       priority: "high",
       estimatedTime: "15-30 minutes"
     },
     {
-      action: "Identify any specific deadlines or dates mentioned in the document",
+      action: "SAMPLE: Identify deadlines (fictional)",
       priority: "high",
       estimatedTime: "10 minutes"
     },
     {
-      action: "Make a list of any documents or information you need to provide",
-      priority: "medium",
-      estimatedTime: "15 minutes"
-    },
-    {
-      action: "Contact the sender if you have questions or need clarification",
+      action: "SAMPLE: Contact sender if needed (fictional)",
       priority: "medium",
       estimatedTime: "30 minutes"
     }
   ],
   
   documentsNeeded: [
-    "Any documents specifically mentioned in the original document",
-    "Proof of identity (if required)",
-    "Supporting documentation as requested"
+    "Documents mentioned in original (sample)",
+    "Proof of identity if required (sample)",
+    "Supporting documentation (sample)"
   ],
   
   riskLevel: "medium",
-  riskExplanation: "Without more specific information about the document type, it's difficult to assess the exact risk level. However, any official document typically requires timely attention. The main risks are: missing deadlines, not providing required information, or misunderstanding the requirements. To reduce risk, read the document carefully, note all deadlines, and contact the sender if anything is unclear.",
+  riskExplanation: "SAMPLE ANALYSIS: This demonstrates how ClearPath AI would assess risk level. In a real situation, it would be important to: read carefully, note deadlines, gather required information, and contact the sender with questions. This is fictional data for demonstration only.",
   
   checklist: [
     {
-      step: "Read the document thoroughly from start to finish",
+      step: "SAMPLE: Read document thoroughly (fictional)",
       completed: false
     },
     {
-      step: "Highlight or note all dates and deadlines mentioned",
+      step: "SAMPLE: Note all dates and deadlines (fictional)",
       completed: false
     },
     {
-      step: "Make a list of all required actions",
+      step: "SAMPLE: List required actions (fictional)",
       completed: false
     },
     {
-      step: "Gather any documents or information mentioned",
+      step: "SAMPLE: Gather documents (fictional)",
       completed: false
     },
     {
-      step: "Contact the sender if you have questions",
-      completed: false
-    },
-    {
-      step: "Respond or take action before any deadlines",
+      step: "SAMPLE: Contact sender if needed (fictional)",
       completed: false
     }
   ],
   
   draftReply: {
-    subject: "Re: [Original Document Subject]",
-    body: `Dear [Recipient Name],
+    subject: "SAMPLE: Response (Fictional)",
+    body: `SAMPLE EMAIL - FOR DEMONSTRATION ONLY
 
-Thank you for your [letter/email/notice] dated [date].
+Dear [Recipient Name],
 
-I am writing to confirm that I have received and reviewed the document. I understand that [brief summary of what the document is about].
+Thank you for your [letter/email/notice].
 
-I would like to clarify a few points:
-1. [Your first question or concern]
-2. [Your second question or concern]
-3. [Any other questions]
+I have reviewed the information and would like to clarify:
+1. [Your question]
+2. [Your concern]
 
-I am committed to [responding/complying/taking action] by the deadline mentioned. Please let me know if you need any additional information from me.
+Please let me know if you need any additional information.
 
-Thank you for your assistance.
+Thank you.
 
 Best regards,
 [Your Name]
-[Your Contact Information]`,
+
+NOTE: This is fictional sample text for demonstration purposes.`,
     tone: "professional"
   },
   
-  simplerExplanation: "This is an important paper. You need to read it carefully. Look for dates when you must do something. Look for things you must send or do. If you do not understand, call or email the person who sent this paper. Do not wait - do this soon. Keep a copy of this paper and any papers you send back."
+  simplerExplanation: "SAMPLE EXPLANATION: This is an important paper. Read it carefully. Look for dates when you must do something. Look for things you must send. If you don't understand, call or email the person who sent it. Don't wait - do this soon. (This is fictional sample data for demonstration only)",
+  
+  ultraSimpleExplanation: `SAMPLE - ULTRA SIMPLE VERSION:
+• Important paper
+• Read carefully
+• Find dates
+• Find what to do
+• Don't understand? Call them
+• Do it soon
+
+(This is fictional demonstration data)`
 };
 
 // Helper function to determine which mock result to use based on document content

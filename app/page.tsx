@@ -7,100 +7,109 @@ import DocumentInput from '@/components/DocumentInput';
 import LoadingState from '@/components/LoadingState';
 import ResultsDisplay from '@/components/ResultsDisplay';
 import Disclaimer from '@/components/Disclaimer';
-import { AnalysisResult } from '@/lib/types';
+import { AnalysisResult, Language } from '@/lib/types';
 import { getMockResult } from '@/lib/mockData';
 
-// Sample document texts
+// Sample document texts - CLEARLY FICTIONAL FOR DEMONSTRATION
 const sampleDocuments = {
-  appointment: `MEMORIAL HOSPITAL
-123 Healthcare Drive
+  appointment: `SAMPLE DOCUMENT - FOR DEMONSTRATION ONLY
+
+DEMO MEDICAL CENTER
+123 Example Street (Fictional Address)
 Toronto, ON M5H 2N2
 
 Date: June 15, 2026
 
 Dear Patient,
 
-RE: APPOINTMENT CONFIRMATION - URGENT FOLLOW-UP REQUIRED
+RE: APPOINTMENT CONFIRMATION
 
-This letter confirms your scheduled appointment with Dr. Sarah Chen, Cardiology Department.
+This is a sample appointment letter for demonstration purposes only.
 
 APPOINTMENT DETAILS:
 Date: July 8, 2026
 Time: 2:30 PM
-Location: Memorial Hospital, 3rd Floor, Cardiology Wing
+Location: Demo Medical Center, 3rd Floor, Cardiology Wing
 Duration: Approximately 45 minutes
 
-IMPORTANT INSTRUCTIONS:
-1. You must fast for 12 hours before your appointment (no food or drink except water after 2:30 AM on July 8th)
+PREPARATION INSTRUCTIONS:
+1. Please fast for 12 hours before your appointment (no food or drink except water after 2:30 AM on July 8th)
 2. Bring your health card and photo ID
 3. Bring a list of all current medications
 4. Arrive 15 minutes early to complete registration
 5. If you have had any recent blood work, bring those results
 
 REQUIRED DOCUMENTS:
-- Ontario Health Card (OHIP)
+- Health Card
 - Government-issued photo ID
-- Referral letter from Dr. James Wilson (if not already on file)
-- Previous test results or medical records related to your heart condition
+- Referral letter from your family doctor (if not already on file)
+- Previous test results or medical records (if available)
 
-If you cannot attend, you MUST call us at least 48 hours in advance at (416) 555-0123.
+If you cannot attend, please call us at least 48 hours in advance at (555) 123-4567 (fictional number).
 
 Sincerely,
-Jennifer Martinez
-Patient Coordinator
-Cardiology Department`,
+Jane Demo, Patient Coordinator
+Demo Medical Center
 
-  housing: `PROPERTY MANAGEMENT SERVICES INC.
-456 Rental Avenue, Suite 200
+NOTE: This is a fictional sample document created for demonstration purposes.`,
+
+  housing: `SAMPLE DOCUMENT - FOR DEMONSTRATION ONLY
+
+DEMO PROPERTY MANAGEMENT
+456 Sample Avenue, Suite 200 (Fictional Address)
 Toronto, ON M4B 1B3
 
 Date: June 20, 2026
 
-NOTICE TO VACATE PREMISES
-FORM N4 - NOTICE TO END YOUR TENANCY FOR NON-PAYMENT OF RENT
+SAMPLE RENT NOTICE - NOT A REAL LEGAL DOCUMENT
 
-TO: Maria Santos
-Unit 304, 789 Maple Street
+TO: John Demo (Fictional Name)
+Unit 304, 789 Example Street (Fictional Address)
 Toronto, ON M5R 2E4
 
-THIS IS A LEGAL NOTICE THAT COULD LEAD TO YOU LOSING YOUR HOME
+This is a sample rent notice for demonstration purposes only.
 
-REASON FOR THIS NOTICE:
-You have not paid your rent in full. You owe the following amounts:
+NOTICE DETAILS:
+You have outstanding rent payments for the following months:
 
-RENT ARREARS:
+RENT BALANCE:
 - May 2026 Rent: $1,800.00 (Due: May 1, 2026)
 - June 2026 Rent: $1,800.00 (Due: June 1, 2026)
-TOTAL AMOUNT OWING: $3,600.00
+TOTAL AMOUNT: $3,600.00
 
-TERMINATION DATE: July 11, 2026
-You must move out of your rental unit by this date.
+PAYMENT DEADLINE: July 11, 2026
 
-WHAT YOU MUST DO:
+YOUR OPTIONS:
 
-OPTION 1 - PAY THE RENT OWING:
-You can void (cancel) this notice by paying the full amount of $3,600.00 on or before July 11, 2026.
+OPTION 1 - PAY THE OUTSTANDING AMOUNT:
+You can resolve this notice by paying the full amount of $3,600.00 on or before July 11, 2026.
 
-OPTION 2 - MOVE OUT:
-If you do not pay the rent owing and do not move out by July 11, 2026, we may apply to the Landlord and Tenant Board for an order to evict you.
+OPTION 2 - ARRANGE A PAYMENT PLAN:
+If you're experiencing financial difficulties, please contact us immediately to discuss a payment arrangement.
 
-OPTION 3 - DISPUTE THIS NOTICE:
-If you disagree with this notice or want to talk about a payment plan, you must contact us immediately at (416) 555-7890.
+OPTION 3 - DISCUSS YOUR SITUATION:
+If you have questions or concerns about this notice, please reach out to us at (555) 789-0123 (fictional number).
 
-Contact: Robert Chen, Property Manager
-Phone: (416) 555-7890 ext. 102`,
+Contact: Robert Demo, Property Manager (Fictional Name)
+Phone: (555) 789-0123 ext. 102 (Fictional Number)
 
-  school: `From: Financial Aid Office <finaid@torontouniversity.ca>
-To: student.ahmed@torontouniversity.ca
+IMPORTANT: This is a fictional sample document for demonstration purposes only. It is not a real eviction notice and has no legal effect.`,
+
+  school: `SAMPLE DOCUMENT - FOR DEMONSTRATION ONLY
+
+From: Financial Aid Office <demo@sampleuniversity.edu> (Fictional Email)
+To: student.demo@sampleuniversity.edu (Fictional Email)
 Date: June 18, 2026
-Subject: URGENT: Financial Aid Verification Required - Action Needed by July 5, 2026
+Subject: Financial Aid Verification Required - Sample Document
 
-Dear Ahmed Hassan,
+Dear Alex Demo (Fictional Name),
 
-RE: Financial Aid Application - Student ID: 20261234567
+RE: Financial Aid Application - Student ID: DEMO1234567
+
+This is a sample financial aid verification letter for demonstration purposes only.
 
 VERIFICATION STATUS: INCOMPLETE
-Your financial aid application has been selected for verification. You must complete the verification process to receive your financial aid for the 2026-2027 academic year.
+Your financial aid application requires verification. You must complete the verification process to receive your financial aid for the 2026-2027 academic year.
 
 DOCUMENTS REQUIRED:
 You must submit the following documents by July 5, 2026:
@@ -116,10 +125,11 @@ You must submit the following documents by July 5, 2026:
 
 SUBMISSION DEADLINE: JULY 5, 2026 (5:00 PM EST)
 
-IMPORTANT CONSEQUENCES IF YOU DO NOT COMPLETE VERIFICATION:
-⚠️ Your financial aid will be CANCELLED
-⚠️ You will be responsible for paying full tuition by August 15, 2026
-⚠️ Late payment fees of $100 will apply after August 15
+IMPORTANT INFORMATION:
+If verification is not completed by the deadline:
+• Your financial aid may be delayed or adjusted
+• You may need to arrange alternative payment for tuition
+• Late payment fees may apply after August 15
 
 ESTIMATED FINANCIAL AID (Pending Verification):
 - OSAP: $8,500
@@ -127,16 +137,19 @@ ESTIMATED FINANCIAL AID (Pending Verification):
 - Work-Study: $3,000
 TOTAL: $13,500
 
-Upload documents at: portal.torontouniversity.ca
-Questions? Call (416) 555-3000
+Upload documents at: portal.sampleuniversity.edu (fictional website)
+Questions? Call (555) 300-0000 (fictional number)
 
-Toronto University Financial Aid Office`
+Sample University Financial Aid Office
+
+NOTE: This is a fictional sample document created for demonstration purposes. All names, numbers, and institutions are fictional.`
 };
 
 export default function Home() {
   const [documentText, setDocumentText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<AnalysisResult | null>(null);
+  const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
 
   const handleLoadSample = (sampleType: 'appointment' | 'housing' | 'school') => {
     setDocumentText(sampleDocuments[sampleType]);
@@ -168,8 +181,11 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <Header />
+    <main className="min-h-screen bg-background">
+      <Header 
+        currentLanguage={currentLanguage}
+        onLanguageChange={setCurrentLanguage}
+      />
       
       {!results && !isLoading && <Hero />}
       
@@ -190,7 +206,7 @@ export default function Home() {
           <ResultsDisplay results={results} />
           
           {/* New Analysis Button */}
-          <div className="container mx-auto px-4 pb-8">
+          <div className="container mx-auto px-4 pb-12">
             <div className="max-w-4xl mx-auto text-center">
               <button
                 onClick={() => {
@@ -198,7 +214,7 @@ export default function Home() {
                   setDocumentText('');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-primary hover:underline font-medium"
+                className="text-primary hover:underline font-medium text-lg"
               >
                 ← Analyze Another Document
               </button>
