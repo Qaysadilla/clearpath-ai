@@ -1,0 +1,46 @@
+{
+  "name": "clearpath-ai",
+  "version": "1.0.0",
+  "description": "AI document-to-action assistant that turns confusing documents into plain-language summaries, deadlines, checklists, and draft replies for newcomers and students.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qaysadilla/clearpath-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Qaysadilla/clearpath-ai/issues"
+  },
+  "homepage": "https://github.com/Qaysadilla/clearpath-ai#readme",
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.3.0",
+    "@tailwindcss/postcss": "^4.3.1",
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.5.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.9",
+    "lucide-react": "^1.21.0",
+    "next": "^16.2.9",
+    "postcss": "^8.5.15",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3"
+  }
+}
