@@ -42,4 +42,27 @@ export interface DraftEmail {
 
 export type DocumentType = 'appointment' | 'housing' | 'school' | 'generic';
 
+// API Request/Response Types
+export interface ApiRequest {
+  documentText: string;
+}
+
+export interface ApiResponse {
+  success: boolean;
+  data?: AnalysisResult;
+  error?: string;
+  metadata?: {
+    model: string;
+    mode: 'ai' | 'demo';
+    warning?: string;
+    reason?: string;
+    timestamp: string;
+  };
+}
+
+export interface ApiError {
+  success: false;
+  error: string;
+}
+
 // Made with Bob

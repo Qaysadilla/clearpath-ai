@@ -162,22 +162,40 @@ export default function Home() {
     setIsLoading(true);
     setResults(null);
 
-    // Simulate API delay (2.5 seconds)
-    await new Promise(resolve => setTimeout(resolve, 2500));
-
-    // Get mock result based on document content
-    const mockResult = getMockResult(documentText);
-    
-    setResults(mockResult);
-    setIsLoading(false);
-
-    // Scroll to results
-    setTimeout(() => {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
+    try {
+      // Call the API endpoint
+      const response = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ documentText })
       });
-    }, 100);
+
+      const data = await response.json();
+
+      if (data.success && data.data) {
+        setResults(data.data);
+      } else {
+        // API returned error, use mock fallback
+        console.warn('API error, using mock:', data.error);
+        const mockResult = getMockResult(documentText);
+        setResults(mockResult);
+      }
+    } catch (error) {
+      // Network error or other failure, use mock fallback
+      console.error('Network error, using mock:', error);
+      const mockResult = getMockResult(documentText);
+      setResults(mockResult);
+    } finally {
+      setIsLoading(false);
+      
+      // Scroll to results
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
   };
 
   return (
