@@ -26,10 +26,12 @@ export default function DocumentInput({
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <Card className="max-w-4xl mx-auto shadow-lg border-gray-200">
+      <Card className="max-w-4xl mx-auto">
         <CardHeader className="space-y-3">
           <CardTitle className="flex items-center gap-3 text-2xl">
-            <FileText className="w-6 h-6 text-primary" />
+            <div className="p-2 rounded-xl bg-primary/10">
+              <FileText className="w-6 h-6 text-primary" />
+            </div>
             Paste Your Document
           </CardTitle>
           <CardDescription className="text-base">
@@ -46,7 +48,7 @@ export default function DocumentInput({
                 size="default"
                 onClick={() => onLoadSample('appointment')}
                 disabled={isLoading}
-                className="hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                className="hover:bg-blue-50 hover:border-blue-300"
               >
                 📅 Medical Appointment
               </Button>
@@ -55,7 +57,7 @@ export default function DocumentInput({
                 size="default"
                 onClick={() => onLoadSample('housing')}
                 disabled={isLoading}
-                className="hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                className="hover:bg-blue-50 hover:border-blue-300"
               >
                 🏠 Housing Notice
               </Button>
@@ -64,7 +66,7 @@ export default function DocumentInput({
                 size="default"
                 onClick={() => onLoadSample('school')}
                 disabled={isLoading}
-                className="hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                className="hover:bg-blue-50 hover:border-blue-300"
               >
                 🎓 School Email
               </Button>
@@ -78,21 +80,21 @@ export default function DocumentInput({
               value={documentText}
               onChange={(e) => setDocumentText(e.target.value)}
               disabled={isLoading}
-              className="min-h-[320px] resize-y text-base leading-relaxed"
+              className="min-h-[340px] resize-y text-base leading-relaxed"
               maxLength={maxChars}
             />
-            <div className="absolute bottom-3 right-3 text-xs text-muted-foreground bg-white px-2 py-1 rounded">
+            <div className="absolute bottom-4 right-4 text-xs text-muted-foreground bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm border border-gray-200">
               {charCount} / {maxChars}
             </div>
           </div>
 
           {/* Analyze Button */}
-          <div className="flex justify-center pt-2">
+          <div className="flex justify-center pt-4">
             <Button
               size="lg"
               onClick={onAnalyze}
               disabled={!documentText.trim() || isLoading}
-              className="w-full sm:w-auto px-8 py-6 text-lg shadow-md hover:shadow-lg transition-all"
+              className="w-full sm:w-auto px-10 py-6 text-lg font-semibold"
             >
               <Sparkles className="w-5 h-5 mr-2" />
               {isLoading ? 'Analyzing...' : 'Analyze Document'}
