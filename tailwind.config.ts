@@ -49,6 +49,16 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
+        sans: ['Source Sans 3', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        'soft': '0 1px 2px 0 rgba(45, 58, 49, 0.05)',
+        'soft-md': '0 4px 6px -1px rgba(45, 58, 49, 0.08), 0 2px 4px -1px rgba(45, 58, 49, 0.04)',
+        'soft-lg': '0 10px 15px -3px rgba(45, 58, 49, 0.08), 0 4px 6px -2px rgba(45, 58, 49, 0.04)',
+        'soft-xl': '0 20px 25px -5px rgba(45, 58, 49, 0.1), 0 10px 10px -5px rgba(45, 58, 49, 0.04)',
+      },
     },
   },
   plugins: [],

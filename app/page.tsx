@@ -7,7 +7,9 @@ import DocumentInput from '@/components/DocumentInput';
 import LoadingState from '@/components/LoadingState';
 import ResultsDisplay from '@/components/ResultsDisplay';
 import Disclaimer from '@/components/Disclaimer';
+import Dashboard from '@/components/Dashboard';
 import { AnalysisResult, Language } from '@/lib/types';
+import { UserType, DocumentType, saveAnalysis, SavedAnalysis } from '@/lib/storage';
 import { getMockResult } from '@/lib/mockData';
 
 // Sample document texts - CLEARLY FICTIONAL FOR DEMONSTRATION
@@ -145,11 +147,16 @@ Sample University Financial Aid Office
 NOTE: This is a fictional sample document created for demonstration purposes. All names, numbers, and institutions are fictional.`
 };
 
+type AppView = 'analyze' | 'results' | 'dashboard';
+
 export default function Home() {
   const [documentText, setDocumentText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<AnalysisResult | null>(null);
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
+  const [userType, setUserType] = useState<UserType | null>(null);
+  const [documentType, setDocumentType] = useState<DocumentType | null>(null);
+  const [view, setView] = useState<AppView>('analyze');
 
   const handleLoadSample = (sampleType: 'appointment' | 'housing' | 'school') => {
     setDocumentText(sampleDocuments[sampleType]);
@@ -163,7 +170,6 @@ export default function Home() {
     setResults(null);
 
     try {
-      // Call the API endpoint
       const response = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -175,73 +181,121 @@ export default function Home() {
       if (data.success && data.data) {
         setResults(data.data);
       } else {
-        // API returned error, use mock fallback
         console.warn('API error, using mock:', data.error);
         const mockResult = getMockResult(documentText);
         setResults(mockResult);
       }
     } catch (error) {
-      // Network error or other failure, use mock fallback
       console.error('Network error, using mock:', error);
       const mockResult = getMockResult(documentText);
       setResults(mockResult);
     } finally {
       setIsLoading(false);
-      
-      // Scroll to results
+      setView('results');
       setTimeout(() => {
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 100);
     }
   };
 
+  const handleSaveAnalysis = () => {
+    if (!results || !userType || !documentType) return;
+    saveAnalysis(userType, documentType, documentText, results);
+  };
+
+  const handleViewSavedAnalysis = (analysis: SavedAnalysis) => {
+    setResults(analysis.analysis);
+    setUserType(analysis.userType);
+    setDocumentType(analysis.documentType);
+    setDocumentText(analysis.documentText);
+    setView('results');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleStartOver = () => {
+    setResults(null);
+    setDocumentText('');
+    setView('analyze');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigate = (navView: 'analyze' | 'dashboard') => {
+    setView(navView);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <main className="min-h-screen bg-background">
-      <Header 
+      <Header
         currentLanguage={currentLanguage}
         onLanguageChange={setCurrentLanguage}
+        currentView={view === 'results' ? 'analyze' : view as 'analyze' | 'dashboard'}
+        onViewChange={handleNavigate}
       />
-      
-      {!results && !isLoading && <Hero />}
-      
-      {!results && !isLoading && (
-        <DocumentInput
-          documentText={documentText}
-          setDocumentText={setDocumentText}
-          onAnalyze={handleAnalyze}
-          isLoading={isLoading}
-          onLoadSample={handleLoadSample}
-        />
+
+      {/* Analyze View */}
+      {view === 'analyze' && (
+        <>
+          <Hero />
+          <DocumentInput
+            documentText={documentText}
+            setDocumentText={setDocumentText}
+            onAnalyze={handleAnalyze}
+            isLoading={isLoading}
+            onLoadSample={handleLoadSample}
+            userType={userType}
+            setUserType={setUserType}
+            documentType={documentType}
+            setDocumentType={setDocumentType}
+          />
+          <Disclaimer />
+        </>
       )}
 
-      {isLoading && <LoadingState />}
+      {/* Loading State */}
+      {isLoading && (
+        <div className="container mx-auto px-4 py-12">
+          <LoadingState />
+        </div>
+      )}
 
-      {results && !isLoading && (
+      {/* Results View */}
+      {view === 'results' && results && !isLoading && (
         <>
-          <ResultsDisplay results={results} />
-          
-          {/* New Analysis Button */}
+          <ResultsDisplay
+            results={results}
+            userType={userType}
+            documentType={documentType}
+            onSave={handleSaveAnalysis}
+            onViewDashboard={() => handleNavigate('dashboard')}
+          />
+
+          {/* Analyze Another */}
           <div className="container mx-auto px-4 pb-12">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-7xl mx-auto">
               <button
-                onClick={() => {
-                  setResults(null);
-                  setDocumentText('');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="text-primary hover:underline font-medium text-lg"
+                onClick={handleStartOver}
+                className="text-primary hover:underline font-medium text-base"
               >
                 ← Analyze Another Document
               </button>
             </div>
           </div>
+
+          <Disclaimer />
         </>
       )}
 
-      <Disclaimer />
+      {/* Dashboard View */}
+      {view === 'dashboard' && (
+        <>
+          <Dashboard
+            onAnalyzeNew={handleStartOver}
+            onViewSavedAnalysis={handleViewSavedAnalysis}
+          />
+          <Disclaimer />
+        </>
+      )}
     </main>
   );
 }

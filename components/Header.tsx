@@ -1,32 +1,56 @@
 'use client';
 
-import { Compass } from 'lucide-react';
-import LanguageSelector from './LanguageSelector';
+import LanguageSelector from '@/components/LanguageSelector';
 import { Language } from '@/lib/types';
+import Navigation from './Navigation';
+import IBMBadge from './IBMBadge';
+
+type View = 'analyze' | 'dashboard';
 
 interface HeaderProps {
   currentLanguage: Language;
   onLanguageChange: (language: Language) => void;
+  currentView: View;
+  onViewChange: (view: View) => void;
 }
 
-export default function Header({ currentLanguage, onLanguageChange }: HeaderProps) {
+export default function Header({ currentLanguage, onLanguageChange, currentView, onViewChange }: HeaderProps) {
   return (
-    <header className="border-b bg-white shadow-sm">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-soft">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary text-primary-foreground shadow-md">
-              <Compass className="w-6 h-6" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">ClearPath AI</h1>
-              <p className="text-sm text-gray-600">Turn confusion into clarity</p>
+            <div className="flex flex-col">
+              <span className="text-xl font-serif font-bold text-foreground leading-none">
+                ClearPath AI
+              </span>
+              <span className="text-xs text-muted-foreground leading-none mt-0.5 hidden sm:block">
+                Life-Admin Command Center
+              </span>
             </div>
           </div>
-          <LanguageSelector
-            currentLanguage={currentLanguage}
-            onLanguageChange={onLanguageChange}
-          />
+
+          {/* Center Navigation */}
+          <div className="hidden md:block">
+            <Navigation currentView={currentView} onViewChange={onViewChange} />
+          </div>
+
+          {/* Right Side */}
+          <div className="flex items-center gap-3">
+            <div className="hidden lg:block">
+              <IBMBadge />
+            </div>
+            <LanguageSelector
+              currentLanguage={currentLanguage}
+              onLanguageChange={onLanguageChange}
+            />
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden pb-3">
+          <Navigation currentView={currentView} onViewChange={onViewChange} />
         </div>
       </div>
     </header>
