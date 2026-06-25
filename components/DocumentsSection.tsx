@@ -10,16 +10,16 @@ export default function DocumentsSection({ documentsNeeded }: DocumentsSectionPr
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <FileText className="w-5 h-5 text-purple-600" />
+          <FileText className="w-5 h-5 text-primary" aria-hidden="true" />
           Documents Needed
         </CardTitle>
       </CardHeader>
       <CardContent>
         <ul className="space-y-2">
           {documentsNeeded.map((doc, index) => (
-            <li key={index} className="flex items-start gap-2">
-              <span className="text-purple-600 mt-1">📄</span>
-              <span className="text-gray-700">{doc}</span>
+            <li key={index} className="flex items-start gap-2.5">
+              <FileText className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" aria-hidden="true" />
+              <span className="text-sm text-foreground leading-relaxed">{doc}</span>
             </li>
           ))}
         </ul>

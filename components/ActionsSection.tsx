@@ -35,17 +35,17 @@ export default function ActionsSection({ actions }: ActionsSectionProps) {
                 {index + 1}
               </div>
               <div className="flex-1 space-y-2">
-                <p className="text-gray-900 font-medium">{action.action}</p>
+                <p className="text-foreground font-medium">{action.action}</p>
                 <div className="flex flex-wrap gap-2 text-sm">
                   {getPriorityBadge(action.priority)}
                   {action.deadline && (
                     <Badge variant="outline" className="text-xs">
-                      📅 {action.deadline}
+                      {action.deadline}
                     </Badge>
                   )}
                   {action.estimatedTime && (
                     <Badge variant="outline" className="text-xs">
-                      ⏱️ {action.estimatedTime}
+                      {action.estimatedTime}
                     </Badge>
                   )}
                 </div>

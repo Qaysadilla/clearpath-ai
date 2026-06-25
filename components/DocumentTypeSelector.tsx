@@ -1,7 +1,7 @@
 'use client';
 
 import { DocumentType } from '@/lib/storage';
-import { GraduationCap, Home, Building2, Stethoscope, CreditCard, Briefcase, FileText } from 'lucide-react';
+import { GraduationCap, Home, Building2, Stethoscope, CreditCard, Briefcase, FileText, Check } from 'lucide-react';
 
 interface DocumentTypeSelectorProps {
   selectedType: DocumentType | null;
@@ -57,15 +57,16 @@ export default function DocumentTypeSelector({ selectedType, onSelect }: Documen
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-lg font-serif font-semibold text-foreground mb-2">
-          Step 2: What kind of document is this?
+        <p className="section-label text-primary mb-1">Step 2</p>
+        <h3 className="text-lg font-serif font-semibold text-foreground mb-1">
+          What kind of document is this?
         </h3>
         <p className="text-sm text-muted-foreground">
           Select the category that best matches your document.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
         {documentTypes.map((docType) => {
           const Icon = docType.icon;
           const isSelected = selectedType === docType.type;
@@ -74,38 +75,37 @@ export default function DocumentTypeSelector({ selectedType, onSelect }: Documen
             <button
               key={docType.type}
               onClick={() => onSelect(docType.type)}
+              aria-pressed={isSelected}
               className={`
-                relative p-4 rounded-xl border-2 transition-all duration-200
-                hover:shadow-soft-md hover:-translate-y-0.5 text-left
-                ${isSelected 
-                  ? 'border-primary bg-primary/5 shadow-soft-md' 
-                  : 'border-border bg-card hover:border-primary/30'
+                relative p-4 rounded-xl border text-left transition-all duration-150
+                hover:shadow-soft-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50
+                ${isSelected
+                  ? 'border-primary bg-primary/5 shadow-soft-md'
+                  : 'border-border bg-card hover:border-primary/40 hover:bg-muted/30'
                 }
               `}
             >
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start gap-3">
                 <div className={`
-                  w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0
+                  w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-150
                   ${isSelected ? 'bg-primary/10' : 'bg-muted'}
                 `}>
-                  <Icon className={`w-5 h-5 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`} />
+                  <Icon className={`w-4.5 h-4.5 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`} aria-hidden="true" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className={`font-semibold text-sm mb-1 ${isSelected ? 'text-foreground' : 'text-foreground'}`}>
+                  <div className="font-semibold text-sm text-foreground leading-snug mb-0.5">
                     {docType.label}
                   </div>
-                  <div className="text-xs text-muted-foreground leading-tight">
+                  <div className="text-xs text-muted-foreground leading-relaxed">
                     {docType.examples}
                   </div>
                 </div>
               </div>
-              
+
               {isSelected && (
-                <div className="absolute top-2 right-2">
+                <div className="absolute top-2.5 right-2.5">
                   <div className="w-5 h-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-sm">
-                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
+                    <Check className="w-3 h-3" aria-hidden="true" />
                   </div>
                 </div>
               )}

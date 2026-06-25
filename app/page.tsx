@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import ProductPreview from '@/components/ProductPreview';
 import DocumentInput from '@/components/DocumentInput';
 import LoadingState from '@/components/LoadingState';
 import ResultsDisplay from '@/components/ResultsDisplay';
@@ -180,15 +181,18 @@ export default function Home() {
 
       if (data.success && data.data) {
         setResults(data.data);
+        setIsDemo(data.metadata?.mode === 'demo');
       } else {
         console.warn('API error, using mock:', data.error);
         const mockResult = getMockResult(documentText);
         setResults(mockResult);
+        setIsDemo(true);
       }
     } catch (error) {
       console.error('Network error, using mock:', error);
       const mockResult = getMockResult(documentText);
       setResults(mockResult);
+      setIsDemo(true);
     } finally {
       setIsLoading(false);
       setView('results');
@@ -215,6 +219,7 @@ export default function Home() {
   const handleStartOver = () => {
     setResults(null);
     setDocumentText('');
+    setIsDemo(false);
     setView('analyze');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -237,6 +242,7 @@ export default function Home() {
       {view === 'analyze' && (
         <>
           <Hero />
+          <ProductPreview />
           <DocumentInput
             documentText={documentText}
             setDocumentText={setDocumentText}
@@ -268,6 +274,7 @@ export default function Home() {
             documentType={documentType}
             onSave={handleSaveAnalysis}
             onViewDashboard={() => handleNavigate('dashboard')}
+            isDemo={isDemo}
           />
 
           {/* Analyze Another */}

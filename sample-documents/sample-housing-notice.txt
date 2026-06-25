@@ -1,6 +1,6 @@
 PROPERTY MANAGEMENT SERVICES INC.
 456 Rental Avenue, Suite 200
-Toronto, ON M4B 1B3
+Faker, ON M4B 1B3
 Phone: (416) 555-7890 | Fax: (416) 555-7891
 
 Date: June 20, 2026
@@ -10,7 +10,7 @@ FORM N4 - NOTICE TO END YOUR TENANCY FOR NON-PAYMENT OF RENT
 
 TO: Maria Santos
 Unit 304, 789 Maple Street
-Toronto, ON M5R 2E4
+Faker, ON M5R 2E4
 
 FROM: Property Management Services Inc.
 Landlord/Agent for: Maple Street Residences Ltd.

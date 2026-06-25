@@ -60,7 +60,7 @@ export default function ChecklistSection({ checklist: initialChecklist }: Checkl
                   {item.step}
                 </label>
                 {item.notes && (
-                  <p className="text-sm text-gray-600 mt-1 italic">💡 {item.notes}</p>
+                  <p className="text-xs text-muted-foreground mt-1 italic">{item.notes}</p>
                 )}
               </div>
             </div>

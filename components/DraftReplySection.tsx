@@ -62,9 +62,9 @@ export default function DraftReplySection({ draftReply }: DraftReplySectionProps
           </Button>
         </div>
 
-        <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
-          <p className="text-xs text-blue-800">
-            💡 <strong>Tip:</strong> Review and personalize this draft before sending. 
+        <div className="bg-muted/60 p-3 rounded-lg border border-border">
+          <p className="text-xs text-muted-foreground">
+            <strong className="text-foreground">Tip:</strong> Review and personalize this draft before sending.
             Add specific details about your situation and adjust the tone as needed.
           </p>
         </div>

@@ -1,7 +1,6 @@
 'use client';
 
-import { FileText, Upload, Camera } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { FileText, Upload, ScanLine } from 'lucide-react';
 
 type InputMethod = 'paste' | 'upload' | 'scan';
 
@@ -15,28 +14,29 @@ const methods = [
     id: 'paste' as InputMethod,
     icon: FileText,
     label: 'Paste Text',
-    available: true,
+    badge: null,
   },
   {
     id: 'upload' as InputMethod,
     icon: Upload,
     label: 'Upload PDF',
-    available: false,
+    badge: 'Coming soon',
   },
   {
     id: 'scan' as InputMethod,
-    icon: Camera,
+    icon: ScanLine,
     label: 'Scan Image',
-    available: false,
+    badge: 'OCR — planned next',
   },
 ];
 
 export default function InputMethodTabs({ activeMethod, onMethodChange }: InputMethodTabsProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <div>
-        <h3 className="text-lg font-serif font-semibold text-foreground mb-2">
-          Step 3: How would you like to provide your document?
+        <p className="section-label text-primary mb-1">Step 3</p>
+        <h3 className="text-lg font-serif font-semibold text-foreground">
+          How would you like to provide your document?
         </h3>
       </div>
 
@@ -44,40 +44,31 @@ export default function InputMethodTabs({ activeMethod, onMethodChange }: InputM
         {methods.map((method) => {
           const Icon = method.icon;
           const isActive = activeMethod === method.id;
+          const isAvailable = method.badge === null;
 
           return (
             <button
               key={method.id}
-              onClick={() => method.available && onMethodChange(method.id)}
-              disabled={!method.available}
+              onClick={() => isAvailable && onMethodChange(method.id)}
+              disabled={!isAvailable}
+              aria-pressed={isAvailable ? isActive : undefined}
               className={`
-                relative px-6 py-3 rounded-xl border-2 transition-all duration-200
-                flex items-center gap-2
+                flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all duration-150
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50
                 ${isActive
-                  ? 'border-primary bg-primary/5 shadow-soft-md'
-                  : method.available
-                    ? 'border-border bg-card hover:border-primary/30 hover:shadow-soft'
-                    : 'border-border bg-muted cursor-not-allowed opacity-60'
+                  ? 'border-primary bg-primary/5 text-foreground shadow-soft'
+                  : isAvailable
+                    ? 'border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground hover:bg-muted/30'
+                    : 'border-border bg-muted text-muted-foreground cursor-not-allowed opacity-70'
                 }
               `}
             >
-              <Icon className={`w-5 h-5 ${isActive ? 'text-primary' : method.available ? 'text-foreground' : 'text-muted-foreground'}`} />
-              <span className={`font-semibold text-sm ${isActive ? 'text-foreground' : method.available ? 'text-foreground' : 'text-muted-foreground'}`}>
-                {method.label}
-              </span>
-              {!method.available && (
-                <Badge variant="secondary" className="ml-1 text-xs">
-                  Coming Soon
-                </Badge>
-              )}
-              {isActive && (
-                <div className="absolute -top-1 -right-1">
-                  <div className="w-5 h-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-sm">
-                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
+              <Icon className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+              <span>{method.label}</span>
+              {method.badge && (
+                <span className="text-[10px] font-normal tracking-wide text-muted-foreground/80 bg-muted px-1.5 py-0.5 rounded-md border border-border/60">
+                  {method.badge}
+                </span>
               )}
             </button>
           );
@@ -85,9 +76,15 @@ export default function InputMethodTabs({ activeMethod, onMethodChange }: InputM
       </div>
 
       {activeMethod === 'paste' && (
-        <div className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg border border-border">
-          <p>Copy and paste the text from your document below. You can also try one of our sample documents.</p>
-        </div>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          Copy and paste the text from your document below, or try one of the sample documents.
+        </p>
+      )}
+
+      {activeMethod !== 'paste' && (
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          Image scanning and OCR are planned for a future release. Use Paste Text for now.
+        </p>
       )}
     </div>
   );
