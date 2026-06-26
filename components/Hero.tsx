@@ -29,7 +29,7 @@ const processSteps = [
 
 export default function Hero() {
   return (
-    <section className="relative bg-background py-16 md:py-20 overflow-hidden">
+    <section className="relative bg-background py-10 md:py-14 overflow-hidden">
       {/* Subtle background texture */}
       <div className="absolute inset-0 opacity-[0.025] pointer-events-none">
         <div
@@ -65,7 +65,7 @@ export default function Hero() {
         </div>
 
         {/* Trust labels */}
-        <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 mb-14">
+        <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 mb-10">
           {trustLabels.map(({ icon: Icon, text }) => (
             <div key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
               <Icon className="w-3.5 h-3.5 text-primary flex-shrink-0" aria-hidden="true" />
@@ -75,17 +75,17 @@ export default function Hero() {
         </div>
 
         {/* Thin rule divider */}
-        <div className="rule-line max-w-5xl mx-auto mb-14" />
+        <div className="rule-line max-w-5xl mx-auto mb-10" />
 
         {/* Process steps */}
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden shadow-soft">
+          <div className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden shadow-soft divide-y divide-border md:divide-y-0">
             {processSteps.map((step, i) => {
               const Icon = step.icon;
               return (
                 <div
                   key={step.number}
-                  className="group bg-card hover:bg-primary/[0.03] transition-colors duration-200 p-8 flex flex-col gap-4"
+                  className="group bg-card hover:bg-primary/[0.03] transition-colors duration-200 p-6 flex flex-col gap-3"
                 >
                   {/* Step number + icon row */}
                   <div className="flex items-center gap-3">

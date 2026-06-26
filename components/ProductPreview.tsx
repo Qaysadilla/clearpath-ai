@@ -29,10 +29,10 @@ const importanceStyles = {
 
 export default function ProductPreview() {
   return (
-    <section className="bg-muted/40 border-y border-border py-14 md:py-16">
+    <section className="bg-muted/40 border-y border-border py-10 md:py-12">
       <div className="container mx-auto px-4">
         {/* Section label */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <p className="section-label text-primary mb-2">See what ClearPath produces</p>
           <p className="text-sm text-muted-foreground">
             A sample analysis result — not a real AI call
@@ -42,7 +42,7 @@ export default function ProductPreview() {
         <div className="max-w-3xl mx-auto">
           <div className="bg-card border border-border rounded-2xl shadow-soft-lg overflow-hidden">
             {/* Card header */}
-            <div className="px-6 pt-6 pb-4 border-b border-border">
+            <div className="px-5 pt-5 pb-4 border-b border-border">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -63,11 +63,11 @@ export default function ProductPreview() {
               </div>
             </div>
 
-            <div className="px-6 py-5 space-y-5">
+            <div className="px-5 py-4 space-y-4">
               {/* Summary */}
               <div>
                 <p className="section-label mb-2">Summary</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-foreground leading-relaxed">
                   Your workshop registration is incomplete. You must submit a signed consent form and a student ID photo before Aug 12 to secure your spot. Missing this deadline may result in your place being given to another student.
                 </p>
               </div>
@@ -145,7 +145,7 @@ export default function ProductPreview() {
           </div>
 
           {/* Below-card note */}
-          <p className="text-center text-xs text-muted-foreground mt-4">
+          <p className="text-center text-xs text-muted-foreground mt-3">
             This is a static preview. Analyze your own document below to get a real result.
           </p>
         </div>

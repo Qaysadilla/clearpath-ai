@@ -58,14 +58,14 @@ export default function Dashboard({ onAnalyzeNew, onViewSavedAnalysis }: Dashboa
   const allTasks = getAllTasks();
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="max-w-7xl mx-auto space-y-10">
+    <div className="container mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto space-y-8">
 
         {/* Dashboard Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <p className="section-label mb-1">Your Command Center</p>
-            <h2 className="text-4xl font-serif font-bold text-foreground">Dashboard</h2>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Dashboard</h2>
             <p className="text-muted-foreground mt-2">
               Your saved documents, deadlines, and tasks — all in one place.
             </p>

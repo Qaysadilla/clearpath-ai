@@ -97,7 +97,7 @@ export default function MiniCalendar({ deadlines }: MiniCalendarProps) {
           return (
             <div
               key={index}
-              className={`flex items-start gap-4 px-6 py-4 border-l-4 ${config.border} hover:bg-muted/20 transition-colors duration-150`}
+              className={`flex items-start gap-3 px-5 py-3 border-l-4 ${config.border} hover:bg-muted/20 transition-colors duration-150`}
             >
               {/* Date Block */}
               <div className="flex-shrink-0 w-12 text-center">

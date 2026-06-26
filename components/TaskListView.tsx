@@ -134,7 +134,7 @@ export default function TaskListView({ tasks, onTasksChange }: TaskListViewProps
 function TaskRow({ task, onToggle }: { task: TaskItem; onToggle: () => void }) {
   return (
     <div
-      className="flex items-start gap-4 px-6 py-4 hover:bg-muted/20 transition-colors duration-150 cursor-pointer"
+      className="flex items-start gap-4 px-5 py-3 hover:bg-muted/20 transition-colors duration-150 cursor-pointer"
       onClick={onToggle}
     >
       <div className="mt-0.5 flex-shrink-0">

@@ -35,7 +35,7 @@ function formatDate(iso: string) {
 export default function SavedDocumentsList({ analyses, onView, onDelete }: SavedDocumentsListProps) {
   if (analyses.length === 0) {
     return (
-      <div className="bg-card rounded-2xl border border-border p-12 text-center shadow-soft">
+      <div className="bg-card rounded-2xl border border-border p-8 text-center shadow-soft">
         <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center mx-auto mb-4">
           <FileText className="w-8 h-8 text-muted-foreground" />
         </div>

@@ -52,18 +52,18 @@ export default function DashboardStats({ stats }: DashboardStatsProps) {
         return (
           <div
             key={card.label}
-            className="bg-card rounded-2xl border border-border p-6 shadow-soft hover:shadow-soft-md transition-all duration-200 hover:-translate-y-0.5"
+            className="bg-card rounded-2xl border border-border p-5 shadow-soft hover:shadow-soft-md transition-all duration-200 hover:-translate-y-0.5"
           >
-            <div className="flex items-center justify-between mb-4">
-              <div className={`w-10 h-10 rounded-xl ${card.bg} flex items-center justify-center`}>
-                <Icon className={`w-5 h-5 ${card.color}`} />
+            <div className="flex items-center justify-between mb-3">
+              <div className={`w-9 h-9 rounded-xl ${card.bg} flex items-center justify-center`}>
+                <Icon className={`w-4.5 h-4.5 ${card.color}`} aria-hidden="true" />
               </div>
-              <span className={`text-3xl font-serif font-bold ${card.value > 0 ? card.color : 'text-muted-foreground'}`}>
+              <span className={`text-2xl font-serif font-bold ${card.value > 0 ? card.color : 'text-muted-foreground'}`}>
                 {card.value}
               </span>
             </div>
             <div className="font-semibold text-sm text-foreground">{card.label}</div>
-            <div className="text-xs text-muted-foreground mt-1">{card.description}</div>
+            <div className="text-xs text-muted-foreground mt-1 leading-relaxed">{card.description}</div>
           </div>
         );
       })}

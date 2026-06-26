@@ -44,7 +44,7 @@ const userTypeLabel: Record<UserType, string> = {
 
 export default function ResultsDisplay({ results, userType, documentType, onSave, onViewDashboard, isDemo }: ResultsDisplayProps) {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-8">
       <div className="max-w-7xl mx-auto">
 
         {/* Demo mode banner */}
@@ -104,7 +104,7 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
         <div className="rule-line mb-10" />
 
         {/* Understand Group */}
-        <div className="mb-10">
+        <div className="mb-8">
           <p className="section-label mb-4">Understand</p>
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2">
@@ -117,7 +117,7 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
         </div>
 
         {/* Act Group */}
-        <div className="mb-10">
+        <div className="mb-8">
           <p className="section-label mb-4">Act</p>
           <div className="grid lg:grid-cols-2 gap-6">
             <ActionsSection actions={results.actions} />
@@ -126,7 +126,7 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
         </div>
 
         {/* Prepare Group */}
-        <div className="mb-10">
+        <div className="mb-8">
           <p className="section-label mb-4">Prepare</p>
           <div className="grid lg:grid-cols-2 gap-6">
             <ChecklistSection checklist={results.checklist} />
@@ -135,13 +135,13 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
         </div>
 
         {/* Reply Group */}
-        <div className="mb-10">
+        <div className="mb-8">
           <p className="section-label mb-4">Reply</p>
           <DraftReplySection draftReply={results.draftReply} />
         </div>
 
         {/* Simplify Group */}
-        <div className="mb-10">
+        <div className="mb-8">
           <p className="section-label mb-4">Simplify</p>
           <SimplerExplanation
             simplerExplanation={results.simplerExplanation}
@@ -151,11 +151,11 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
 
         {/* Bottom CTA */}
         <div className="rule-line mb-8" />
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-sm text-muted-foreground">
-            Save this analysis to track its deadlines and tasks in your dashboard.
+            Your deadlines and tasks are ready to track.
           </p>
-          <div className="flex gap-2.5">
+          <div className="flex flex-wrap gap-2.5">
             <SaveAnalysisButton onSave={onSave} />
             <Button
               variant="outline"

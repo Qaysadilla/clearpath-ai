@@ -41,7 +41,7 @@ interface StepIndicatorProps {
 
 function StepIndicator({ activeStep }: StepIndicatorProps) {
   return (
-    <div className="flex items-center gap-0 mb-8">
+    <div className="flex items-center gap-0 mb-6">
       {stepConfig.map((step, i) => {
         const isDone = step.number < activeStep;
         const isActive = step.number === activeStep;
@@ -118,12 +118,12 @@ export default function DocumentInput({
   const activeStep = currentStep(userType, documentType);
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
         {/* Step indicator */}
         <StepIndicator activeStep={activeStep} />
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {/* Step 1: User Type Selection */}
           <div>
             <UserTypeSelector selectedType={userType} onSelect={setUserType} />
@@ -132,7 +132,7 @@ export default function DocumentInput({
           {/* Step 2: Document Type Selection */}
           {userType && (
             <div>
-              <div className="rule-line mb-8" />
+              <div className="rule-line mb-6" />
               <DocumentTypeSelector selectedType={documentType} onSelect={setDocumentType} />
             </div>
           )}
@@ -140,7 +140,7 @@ export default function DocumentInput({
           {/* Step 3: Input Method & Document Text */}
           {userType && documentType && (
             <div>
-              <div className="rule-line mb-8" />
+              <div className="rule-line mb-6" />
               <div className="max-w-4xl">
                 <Card className="border shadow-soft-lg">
                   <CardHeader className="space-y-5 pb-4">
@@ -192,7 +192,7 @@ export default function DocumentInput({
                         value={documentText}
                         onChange={(e) => setDocumentText(e.target.value)}
                         disabled={isLoading}
-                        className="min-h-[300px] resize-y text-base leading-relaxed border focus:border-primary"
+                        className="min-h-[200px] resize-y text-base leading-relaxed border focus:border-primary"
                         maxLength={maxChars}
                         aria-label="Document text"
                       />
