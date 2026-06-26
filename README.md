@@ -4,6 +4,10 @@
 
 ClearPath AI helps students, newcomers, immigrants, workers, and families turn confusing documents into plain-language summaries, deadlines, tasks, checklists, and draft replies.
 
+## Live Demo
+
+[Try ClearPath AI](https://clearpath-ai-weld.vercel.app)
+
 ---
 
 ## The Problem
