@@ -191,19 +191,21 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Homepage
 <!-- TODO: Add screenshot of the homepage -->
-_Screenshot coming soon_
+<img width="2940" height="1846" alt="image" src="https://github.com/user-attachments/assets/534e09dd-e08e-41fe-94a6-429a911e0e95" />
+
 
 ### Guided Analysis Flow
 <!-- TODO: Add screenshot of user type / document type selection and document input -->
-_Screenshot coming soon_
+<img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/e7382633-6739-4650-bcb2-63f2eba7140f" />
 
 ### AI Results
 <!-- TODO: Add screenshot of the structured analysis output -->
-_Screenshot coming soon_
+<img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/5f2fa168-43f2-48fe-a521-4fbe7003ae34" />
+<img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/9a6c6b35-e584-48fc-ba2f-d1ad82a97c14" />
 
 ### Dashboard Command Center
 <!-- TODO: Add screenshot of the dashboard with saved plans, deadlines, and tasks -->
-_Screenshot coming soon_
+<img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/c18c929a-ef9a-44b8-8021-4d2690e143cb" />
 
 ---
 
