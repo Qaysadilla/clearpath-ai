@@ -158,6 +158,8 @@ export default function Home() {
   const [userType, setUserType] = useState<UserType | null>(null);
   const [documentType, setDocumentType] = useState<DocumentType | null>(null);
   const [view, setView] = useState<AppView>('analyze');
+  const [isDemo, setIsDemo] = useState(false);
+
 
   const handleLoadSample = (sampleType: 'appointment' | 'housing' | 'school') => {
     setDocumentText(sampleDocuments[sampleType]);

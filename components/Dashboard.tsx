@@ -153,9 +153,9 @@ export default function Dashboard({ onAnalyzeNew, onViewSavedAnalysis }: Dashboa
 
         {/* Footer note */}
         <div className="rule-line" />
-        <div className="text-center text-xs text-muted-foreground space-y-1 py-4">
-          <p>All data is stored privately on this device using localStorage.</p>
-          <p>No accounts, no servers, no sharing. <span className="text-accent font-medium">Secure cloud storage</span> is on our roadmap.</p>
+        <div className="text-center text-xs text-muted-foreground py-4 space-y-1">
+          <p>Saved analyses are stored locally in your browser for this demo. Nothing is sent to a server.</p>
+          <p>Do not upload highly sensitive personal documents in this demo.</p>
         </div>
       </div>
     </div>

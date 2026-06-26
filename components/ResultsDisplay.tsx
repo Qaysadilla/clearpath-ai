@@ -12,7 +12,7 @@ import DraftReplySection from './DraftReplySection';
 import SimplerExplanation from './SimplerExplanation';
 import SaveAnalysisButton from './SaveAnalysisButton';
 import IBMBadge from './IBMBadge';
-import { LayoutDashboard } from 'lucide-react';
+import { LayoutDashboard, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface ResultsDisplayProps {
@@ -21,41 +21,53 @@ interface ResultsDisplayProps {
   documentType: DocumentType | null;
   onSave: () => void;
   onViewDashboard: () => void;
+  isDemo?: boolean;
 }
 
-export default function ResultsDisplay({ results, userType, documentType, onSave, onViewDashboard }: ResultsDisplayProps) {
-  const documentTypeLabel: Record<DocumentType, string> = {
-    school: 'School / Financial Aid',
-    housing: 'Housing / Landlord',
-    government: 'Government / Immigration',
-    medical: 'Medical Appointment',
-    banking: 'Banking / Bills',
-    work: 'Work / Job',
-    other: 'Other',
-  };
+const documentTypeLabel: Record<DocumentType, string> = {
+  school: 'School / Financial Aid',
+  housing: 'Housing / Landlord',
+  government: 'Government / Immigration',
+  medical: 'Medical Appointment',
+  banking: 'Banking / Bills',
+  work: 'Work / Job',
+  other: 'Other',
+};
 
-  const userTypeLabel: Record<UserType, string> = {
-    student: 'Student',
-    newcomer: 'Newcomer / Immigrant',
-    worker: 'Worker',
-    family_helper: 'Family Helper',
-    general: 'General User',
-  };
+const userTypeLabel: Record<UserType, string> = {
+  student: 'Student',
+  newcomer: 'Newcomer / Immigrant',
+  worker: 'Worker',
+  family_helper: 'Family Helper',
+  general: 'General User',
+};
 
+export default function ResultsDisplay({ results, userType, documentType, onSave, onViewDashboard, isDemo }: ResultsDisplayProps) {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-7xl mx-auto">
 
+        {/* Demo mode banner */}
+        {isDemo && (
+          <div role="alert" className="flex items-center gap-2.5 px-4 py-3 mb-6 rounded-xl border border-border bg-muted/60 text-sm text-muted-foreground">
+            <Info className="w-4 h-4 flex-shrink-0 text-accent" aria-hidden="true" />
+            <span>
+              <span className="font-medium text-foreground">Demo mode</span> — IBM watsonx.ai is not connected.
+              This result uses sample data. Connect your API key to analyze with real AI.
+            </span>
+          </div>
+        )}
+
         {/* Results Header */}
         <div className="mb-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div>
-            <p className="section-label mb-2">Analysis Complete</p>
-            <h2 className="text-4xl font-serif font-bold text-foreground mb-3">Your Document Decoded</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-              Here's what we found. Review each section carefully and take action as needed.
+            <p className="section-label mb-2">Analysis complete</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground mb-2 leading-snug">Your Document Analysis</h2>
+            <p className="text-muted-foreground leading-relaxed max-w-2xl">
+              Review each section and take action where needed.
             </p>
             {/* Context tags */}
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="flex flex-wrap gap-2 mt-3">
               {userType && (
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
                   {userTypeLabel[userType]}
@@ -69,17 +81,17 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
             </div>
           </div>
 
-          {/* Save + Dashboard Actions */}
+          {/* Save + Dashboard actions */}
           <div className="flex flex-col sm:items-end gap-3">
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2.5">
               <SaveAnalysisButton onSave={onSave} />
               <Button
                 variant="outline"
                 size="lg"
                 onClick={onViewDashboard}
-                className="hover:bg-primary/5 hover:border-primary/50"
+                className="hover:bg-primary/5 hover:border-primary/40"
               >
-                <LayoutDashboard className="w-5 h-5 mr-2" />
+                <LayoutDashboard className="w-4 h-4 mr-2" aria-hidden="true" />
                 View Dashboard
               </Button>
             </div>
@@ -89,9 +101,7 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
           </div>
         </div>
 
-        <div className="rule-line mb-8" />
-
-        {/* Grouped Result Sections */}
+        <div className="rule-line mb-10" />
 
         {/* Understand Group */}
         <div className="mb-10">
@@ -130,8 +140,8 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
           <DraftReplySection draftReply={results.draftReply} />
         </div>
 
-        {/* Simpler Explanation at Bottom */}
-        <div className="mb-8">
+        {/* Simplify Group */}
+        <div className="mb-10">
           <p className="section-label mb-4">Simplify</p>
           <SimplerExplanation
             simplerExplanation={results.simplerExplanation}
@@ -139,25 +149,35 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
           />
         </div>
 
-        {/* Bottom Save CTA */}
+        {/* Bottom CTA */}
         <div className="rule-line mb-8" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            Save this analysis to track deadlines and tasks in your dashboard.
+            Save this analysis to track its deadlines and tasks in your dashboard.
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-2.5">
             <SaveAnalysisButton onSave={onSave} />
             <Button
               variant="outline"
               size="lg"
               onClick={onViewDashboard}
-              className="hover:bg-primary/5 hover:border-primary/50"
+              className="hover:bg-primary/5 hover:border-primary/40"
             >
-              <LayoutDashboard className="w-5 h-5 mr-2" />
+              <LayoutDashboard className="w-4 h-4 mr-2" aria-hidden="true" />
               View Dashboard
             </Button>
           </div>
         </div>
+
+        {/* Disclaimer — calm, muted, at the bottom */}
+        <div className="mt-10 pt-6 border-t border-border">
+          <p className="text-xs text-muted-foreground leading-relaxed max-w-3xl">
+            <strong className="font-medium text-foreground">Note:</strong> ClearPath AI does not provide legal, immigration, financial, or medical advice.
+            Always consult qualified professionals — lawyers, accountants, doctors, or immigration consultants — for guidance specific to your situation.
+            Sample documents shown are fictional and for demonstration purposes only.
+          </p>
+        </div>
+
       </div>
     </div>
   );

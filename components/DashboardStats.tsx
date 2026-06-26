@@ -28,8 +28,8 @@ const statCards = (stats: Stats) => [
     label: 'Upcoming Deadlines',
     value: stats.upcomingDeadlines,
     icon: Calendar,
-    color: 'text-blue-600',
-    bg: 'bg-blue-100',
+    color: 'text-primary',
+    bg: 'bg-primary/10',
     description: 'Due in the next 7 days',
   },
   {

@@ -10,12 +10,12 @@ export default function SummarySection({ summary }: SummarySectionProps) {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <FileText className="w-5 h-5 text-blue-600" />
+          <FileText className="w-5 h-5 text-primary" aria-hidden="true" />
           Summary
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-gray-700 leading-relaxed">{summary}</p>
+        <p className="text-foreground leading-relaxed">{summary}</p>
       </CardContent>
     </Card>
   );

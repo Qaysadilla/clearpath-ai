@@ -26,13 +26,13 @@ const docTypeLabelMap: Record<DocumentType, string> = {
 };
 
 const docTypeColorMap: Record<DocumentType, string> = {
-  school:     'bg-blue-100 text-blue-700',
-  housing:    'bg-orange-100 text-orange-700',
-  government: 'bg-purple-100 text-purple-700',
-  medical:    'bg-red-100 text-red-700',
-  banking:    'bg-green-100 text-green-700',
-  work:       'bg-indigo-100 text-indigo-700',
-  other:      'bg-gray-100 text-gray-700',
+  school:     'bg-primary/8 text-primary',
+  housing:    'bg-accent/10 text-accent',
+  government: 'bg-secondary/60 text-foreground',
+  medical:    'bg-destructive/8 text-destructive',
+  banking:    'bg-primary/10 text-primary',
+  work:       'bg-muted text-muted-foreground',
+  other:      'bg-muted text-muted-foreground',
 };
 
 export default function TaskListView({ tasks, onTasksChange }: TaskListViewProps) {

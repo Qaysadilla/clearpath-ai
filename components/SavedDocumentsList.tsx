@@ -17,7 +17,7 @@ const docTypeConfig: Record<DocumentType, { icon: React.ElementType; label: stri
   medical:    { icon: Stethoscope,   label: 'Medical Appointment',         color: 'text-red-600',    bg: 'bg-red-50'    },
   banking:    { icon: CreditCard,    label: 'Banking / Bills',             color: 'text-green-600',  bg: 'bg-green-50'  },
   work:       { icon: Briefcase,     label: 'Work / Job',                  color: 'text-indigo-600', bg: 'bg-indigo-50' },
-  other:      { icon: FileText,      label: 'Other',                       color: 'text-gray-600',   bg: 'bg-gray-50'   },
+  other:      { icon: FileText,      label: 'Other',                       color: 'text-muted-foreground', bg: 'bg-muted' },
 };
 
 const riskConfig = {

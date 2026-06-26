@@ -13,30 +13,30 @@ export default function ChecklistSection({ checklist: initialChecklist }: Checkl
   const [checklist, setChecklist] = useState(initialChecklist);
 
   const toggleItem = (index: number) => {
-    setChecklist(prev => prev.map((item, i) => 
+    setChecklist(prev => prev.map((item, i) =>
       i === index ? { ...item, completed: !item.completed } : item
     ));
   };
 
   const completedCount = checklist.filter(item => item.completed).length;
   const totalCount = checklist.length;
-  const progressPercentage = (completedCount / totalCount) * 100;
+  const progressPercentage = totalCount > 0 ? (completedCount / totalCount) * 100 : 0;
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <ListChecks className="w-5 h-5 text-blue-600" />
+          <ListChecks className="w-5 h-5 text-primary" aria-hidden="true" />
           Step-by-Step Checklist
         </CardTitle>
         <div className="mt-2">
-          <div className="flex justify-between text-sm text-gray-600 mb-1">
+          <div className="flex justify-between text-xs text-muted-foreground mb-1.5">
             <span>Progress</span>
             <span>{completedCount} of {totalCount} completed</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+          <div className="w-full bg-border rounded-full h-1.5" role="progressbar" aria-valuenow={completedCount} aria-valuemin={0} aria-valuemax={totalCount}>
+            <div
+              className="bg-primary h-1.5 rounded-full transition-all duration-300"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
@@ -45,22 +45,25 @@ export default function ChecklistSection({ checklist: initialChecklist }: Checkl
       <CardContent>
         <div className="space-y-3">
           {checklist.map((item, index) => (
-            <div key={index} className="flex items-start gap-3 group">
+            <div key={index} className="flex items-start gap-3">
               <input
+                id={`checklist-item-${index}`}
                 type="checkbox"
                 checked={item.completed}
                 onChange={() => toggleItem(index)}
-                className="mt-1 w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                className="mt-0.5 w-4 h-4 rounded border-border text-primary focus:ring-primary/50 cursor-pointer accent-primary"
               />
               <div className="flex-1">
-                <label 
-                  className={`cursor-pointer ${item.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}
-                  onClick={() => toggleItem(index)}
+                <label
+                  htmlFor={`checklist-item-${index}`}
+                  className={`text-sm cursor-pointer leading-snug ${
+                    item.completed ? 'line-through text-muted-foreground' : 'text-foreground'
+                  }`}
                 >
                   {item.step}
                 </label>
                 {item.notes && (
-                  <p className="text-xs text-muted-foreground mt-1 italic">{item.notes}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5 italic">{item.notes}</p>
                 )}
               </div>
             </div>

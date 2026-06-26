@@ -24,27 +24,27 @@ export default function DraftReplySection({ draftReply }: DraftReplySectionProps
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Mail className="w-5 h-5 text-indigo-600" />
+          <Mail className="w-5 h-5 text-primary" aria-hidden="true" />
           Draft Reply
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <p className="text-sm text-gray-600 mb-1">Subject:</p>
-          <p className="font-semibold text-gray-900">{draftReply.subject}</p>
+          <p className="text-xs text-muted-foreground mb-1 section-label">Subject</p>
+          <p className="font-semibold text-foreground">{draftReply.subject}</p>
         </div>
-        
+
         <div>
-          <p className="text-sm text-gray-600 mb-2">Message:</p>
-          <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <pre className="whitespace-pre-wrap text-sm text-gray-700 font-sans">
+          <p className="text-xs text-muted-foreground mb-2 section-label">Message</p>
+          <div className="bg-muted/40 p-4 rounded-lg border border-border">
+            <pre className="whitespace-pre-wrap text-sm text-foreground font-sans leading-relaxed">
               {draftReply.body}
             </pre>
           </div>
         </div>
 
         <div className="flex items-center justify-between pt-2">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-muted-foreground">
             Tone: <span className="capitalize font-medium">{draftReply.tone}</span>
           </p>
           <Button onClick={handleCopy} variant="outline" size="sm">

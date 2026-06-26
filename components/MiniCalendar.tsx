@@ -30,11 +30,11 @@ function getImportanceConfig(importance: Deadline['importance']) {
     default:
       return {
         label: 'Normal',
-        border: 'border-l-blue-400',
-        badge: 'bg-blue-100 text-blue-700 border-blue-200',
-        dot: 'bg-blue-400',
+        border: 'border-l-primary/40',
+        badge: 'bg-primary/8 text-primary border-primary/20',
+        dot: 'bg-primary/40',
         icon: Calendar,
-        iconColor: 'text-blue-500',
+        iconColor: 'text-primary',
       };
   }
 }

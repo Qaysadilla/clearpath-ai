@@ -53,7 +53,7 @@ export default function RiskBadge({ riskLevel, riskExplanation }: RiskBadgeProps
           {config.badge}
         </div>
         <div className={`${config.bgColor} p-4 rounded-lg border ${config.borderColor}`}>
-          <p className="text-sm text-gray-700 leading-relaxed">{riskExplanation}</p>
+          <p className="text-sm text-foreground leading-relaxed">{riskExplanation}</p>
         </div>
       </CardContent>
     </Card>

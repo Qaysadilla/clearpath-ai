@@ -15,11 +15,7 @@ export default function SaveAnalysisButton({ onSave, disabled }: SaveAnalysisBut
   const handleSave = () => {
     onSave();
     setSaved(true);
-    
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setSaved(false);
-    }, 3000);
+    setTimeout(() => setSaved(false), 3000);
   };
 
   return (
@@ -32,13 +28,13 @@ export default function SaveAnalysisButton({ onSave, disabled }: SaveAnalysisBut
     >
       {saved ? (
         <>
-          <Check className="w-5 h-5 mr-2" />
+          <Check className="w-4 h-4 mr-2" aria-hidden="true" />
           Saved to Dashboard
         </>
       ) : (
         <>
-          <Save className="w-5 h-5 mr-2" />
-          Save Analysis
+          <Save className="w-4 h-4 mr-2" aria-hidden="true" />
+          Save this plan
         </>
       )}
     </Button>
