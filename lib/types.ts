@@ -65,4 +65,14 @@ export interface ApiError {
   error: string;
 }
 
+// Translation API Types
+export interface TranslateRequest {
+  analysisResult: AnalysisResult;
+  targetLanguage: Language;
+}
+
+export type TranslateResponse =
+  | { success: true; translatedResult: AnalysisResult; language: string }
+  | { success: false; error: string };
+
 // Made with Bob

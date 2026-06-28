@@ -65,9 +65,6 @@ export default function LanguageSelector({ currentLanguage, onLanguageChange }: 
                 )}
               </button>
             ))}
-            <div className="border-t border-border mt-1 pt-1.5 px-3.5 pb-1">
-              <p className="text-xs text-muted-foreground">Full translation coming soon</p>
-            </div>
           </div>
         </>
       )}

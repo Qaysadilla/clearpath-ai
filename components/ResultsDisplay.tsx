@@ -1,7 +1,9 @@
 'use client';
 
-import { AnalysisResult } from '@/lib/types';
+import { useState } from 'react';
+import { AnalysisResult, Language } from '@/lib/types';
 import { UserType, DocumentType } from '@/lib/storage';
+import TranslationPanel from './TranslationPanel';
 import SummarySection from './SummarySection';
 import DeadlinesSection from './DeadlinesSection';
 import ActionsSection from './ActionsSection';
@@ -43,6 +45,9 @@ const userTypeLabel: Record<UserType, string> = {
 };
 
 export default function ResultsDisplay({ results, userType, documentType, onSave, onViewDashboard, isDemo }: ResultsDisplayProps) {
+  const [displayedResult, setDisplayedResult] = useState<AnalysisResult>(results);
+  const [activeLanguage, setActiveLanguage] = useState<Language>('en');
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-7xl mx-auto">
@@ -103,51 +108,63 @@ export default function ResultsDisplay({ results, userType, documentType, onSave
 
         <div className="rule-line mb-10" />
 
-        {/* Understand Group */}
-        <div className="mb-8">
-          <p className="section-label mb-4">Understand</p>
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2">
-              <SummarySection summary={results.summary} />
+        {/* Translation Panel */}
+        <TranslationPanel
+          originalResult={results}
+          onTranslated={setDisplayedResult}
+          onLanguageChange={setActiveLanguage}
+        />
+
+        {/* Translated content wrapper — dir="rtl" applied for Arabic */}
+        <div dir={activeLanguage === 'ar' ? 'rtl' : undefined}>
+
+          {/* Understand Group */}
+          <div className="mb-8">
+            <p className="section-label mb-4">Understand</p>
+            <div className="grid lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
+                <SummarySection summary={displayedResult.summary} />
+              </div>
+              <div>
+                <RiskBadge riskLevel={displayedResult.riskLevel} riskExplanation={displayedResult.riskExplanation} />
+              </div>
             </div>
-            <div>
-              <RiskBadge riskLevel={results.riskLevel} riskExplanation={results.riskExplanation} />
+          </div>
+
+          {/* Act Group */}
+          <div className="mb-8">
+            <p className="section-label mb-4">Act</p>
+            <div className="grid lg:grid-cols-2 gap-6">
+              <ActionsSection actions={displayedResult.actions} />
+              <DeadlinesSection deadlines={displayedResult.deadlines} />
             </div>
           </div>
-        </div>
 
-        {/* Act Group */}
-        <div className="mb-8">
-          <p className="section-label mb-4">Act</p>
-          <div className="grid lg:grid-cols-2 gap-6">
-            <ActionsSection actions={results.actions} />
-            <DeadlinesSection deadlines={results.deadlines} />
+          {/* Prepare Group */}
+          <div className="mb-8">
+            <p className="section-label mb-4">Prepare</p>
+            <div className="grid lg:grid-cols-2 gap-6">
+              <ChecklistSection checklist={displayedResult.checklist} />
+              <DocumentsSection documentsNeeded={displayedResult.documentsNeeded} />
+            </div>
           </div>
-        </div>
 
-        {/* Prepare Group */}
-        <div className="mb-8">
-          <p className="section-label mb-4">Prepare</p>
-          <div className="grid lg:grid-cols-2 gap-6">
-            <ChecklistSection checklist={results.checklist} />
-            <DocumentsSection documentsNeeded={results.documentsNeeded} />
+          {/* Reply Group */}
+          <div className="mb-8">
+            <p className="section-label mb-4">Reply</p>
+            <DraftReplySection draftReply={displayedResult.draftReply} />
           </div>
-        </div>
 
-        {/* Reply Group */}
-        <div className="mb-8">
-          <p className="section-label mb-4">Reply</p>
-          <DraftReplySection draftReply={results.draftReply} />
-        </div>
+          {/* Simplify Group */}
+          <div className="mb-8">
+            <p className="section-label mb-4">Simplify</p>
+            <SimplerExplanation
+              simplerExplanation={displayedResult.simplerExplanation}
+              ultraSimpleExplanation={displayedResult.ultraSimpleExplanation}
+            />
+          </div>
 
-        {/* Simplify Group */}
-        <div className="mb-8">
-          <p className="section-label mb-4">Simplify</p>
-          <SimplerExplanation
-            simplerExplanation={results.simplerExplanation}
-            ultraSimpleExplanation={results.ultraSimpleExplanation}
-          />
-        </div>
+        </div>{/* end RTL wrapper */}
 
         {/* Bottom CTA */}
         <div className="rule-line mb-8" />
