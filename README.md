@@ -2,7 +2,7 @@
 
 > **Hackathon Submission — Wildcard Challenge: Build Intelligent Systems for the Future of Work**
 
-ClearPath AI helps students, newcomers, immigrants, workers, and families turn confusing documents into plain-language summaries, deadlines, tasks, checklists, and draft replies.
+ClearPath AI helps students, newcomers, immigrants, workers, and families turn confusing documents into plain-language summaries, deadlines, tasks, checklists, draft replies, and multilingual action plans.
 
 ## Live Demo
 
@@ -30,6 +30,7 @@ ClearPath AI uses **IBM watsonx.ai** to analyze pasted document text and return 
 - Step-by-step checklist
 - A draft reply
 - A simpler / ESL-friendly explanation
+- AI-powered translation into Arabic, French, and Spanish
 
 Users can save analyses locally and track all upcoming deadlines and open tasks in a unified **Dashboard Command Center**.
 
@@ -53,6 +54,7 @@ ClearPath AI is an intelligent system that removes the friction of navigating co
 | Checklist | Step-by-step task list generated from the document |
 | Draft reply | AI-generated draft response letter or reply |
 | Simpler explanation | Plain-language and ESL-friendly restatement of the document |
+| AI translation | Translate the generated action plan into Arabic, French, or Spanish |
 | Save to dashboard | Analyses saved to localStorage for later review |
 | Dashboard command center | View all saved plans, upcoming deadlines, and open tasks |
 | Mock fallback mode | Demo stays functional even if AI is unavailable |
@@ -71,7 +73,7 @@ ClearPath AI is an intelligent system that removes the friction of navigating co
 | Components | shadcn/ui |
 | Icons | Lucide React |
 | AI Provider | IBM watsonx.ai |
-| AI Models | IBM Granite / Llama (via watsonx.ai, configurable) |
+| AI Model | Llama 3.3 70B Instruct via IBM watsonx.ai |
 | Storage | localStorage (browser) |
 
 ---
@@ -99,10 +101,12 @@ App validates and parses the AI response
         ▼
 UI renders: summary · deadlines · actions · documents · risk
             checklist · draft reply · simpler explanation
+            translated action plan when requested
         │
         ▼ (if AI unavailable)
 Mock fallback keeps the demo running with realistic sample data
 ```
+A separate `/api/translate` route translates the generated action plan into Arabic, French, or Spanish while preserving dates, deadlines, names, risk labels, and task structure.
 
 **Security:** All API keys and secrets are stored in `.env.local` and are never committed to the repository.
 
@@ -110,7 +114,7 @@ Mock fallback keeps the demo running with realistic sample data
 
 ## How IBM watsonx.ai Is Used
 
-IBM watsonx.ai is the core intelligence engine of ClearPath AI. The app sends unstructured document text to watsonx.ai with a carefully engineered prompt that instructs the model to return a structured JSON object. That JSON is then validated and rendered directly into the app's UI as a full action plan.
+IBM watsonx.ai is the core intelligence engine of ClearPath AI. The app sends unstructured document text to watsonx.ai with a carefully engineered prompt that instructs the model to return a structured JSON object. That JSON is then validated and rendered directly into the app's UI as a full action plan. Watsonx.ai also powers the translation feature. After an action plan is generated, users can translate the structured result into Arabic, French, or Spanish. The translation prompt is designed to preserve dates, names, deadlines, risk labels, and task meaning while making the plan more accessible to multilingual users.
 
 watsonx.ai transforms a raw, confusing document into something immediately actionable — no manual parsing, no guesswork.
 
@@ -186,29 +190,26 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 3. **Paste your document** — copy and paste the text you received
 4. **Analyze with IBM watsonx.ai** — click Analyze and wait a few seconds
 5. **Review your action plan** — summary, deadlines, checklist, draft reply, and more
-6. **Save this plan** — store the analysis to your local dashboard
-7. **Open the dashboard** — view all saved plans, upcoming deadlines, and open tasks
+6. **Translate the action plan** — view the generated plan in Arabic, French, or Spanish
+7. **Save this plan** — store the analysis to your local dashboard
+8. **Open the dashboard** — view all saved plans, upcoming deadlines, and open tasks
 
 ---
 
 ## Screenshots
 
 ### Homepage
-<!-- TODO: Add screenshot of the homepage -->
 <img width="2940" height="1846" alt="image" src="https://github.com/user-attachments/assets/534e09dd-e08e-41fe-94a6-429a911e0e95" />
 
 
 ### Guided Analysis Flow
-<!-- TODO: Add screenshot of user type / document type selection and document input -->
 <img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/e7382633-6739-4650-bcb2-63f2eba7140f" />
 
 ### AI Results
-<!-- TODO: Add screenshot of the structured analysis output -->
 <img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/5f2fa168-43f2-48fe-a521-4fbe7003ae34" />
 <img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/9a6c6b35-e584-48fc-ba2f-d1ad82a97c14" />
 
 ### Dashboard Command Center
-<!-- TODO: Add screenshot of the dashboard with saved plans, deadlines, and tasks -->
 <img width="1470" height="923" alt="image" src="https://github.com/user-attachments/assets/c18c929a-ef9a-44b8-8021-4d2690e143cb" />
 
 ---
@@ -220,7 +221,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - [ ] Secure user accounts
 - [ ] Encrypted database storage
 - [ ] Calendar export and sync (Google Calendar, iCal)
-- [ ] Real-time translation for multilingual users
+- [ ] Expanded translation coverage across the full app UI
 - [ ] Deadline reminders and notifications
 - [ ] Multi-document folders and organization
 
